@@ -7,4 +7,3 @@ if check_name.lower() == name:
     print(True)
 else:
     print('This is not your name')
-    
