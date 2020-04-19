@@ -3,7 +3,11 @@
 
 name = input('Please enter your name: ')
 
-name = name.replace(" ", "")
+#name = name.replace(" ", "") Хотел сразу так реализовать (но вдруг двойное имя типа "Аве Мария"))
+
+
+name = name.split()
+name = ' '.join(name)
 name = name.lower().title()
 
 operator = None
@@ -15,10 +19,11 @@ while operator != 'x':
                       f'multiplication (*)\ndivision (/)\ndivision is complete (//)'
                       f'\nremainder of division of numbers (%)\nraise the number to the degree (**)'
                       f'\nround off the number (r)\nfind the square of the number (sq)'
-                      f'\nexit the program (x)\nplease select the operation you need: '))
+                      f'\nconverting from decimal to binary (b)\nexit the program (x)'
+                      f'\nplease select the operation you need: '))
 
     if operator == '+':
-        # Addition
+    # Addition
         x = float(input('Enter the first number: '))
         y = float(input('Enter the second number: '))
         print(f'Addition of numbers is equal to: {x + y}')
@@ -61,6 +66,10 @@ while operator != 'x':
     elif operator == 'sq':
         x = float(input('Enter the number: '))
         print(f'The square root of the number is: {x **(1/2)}')
+    # Converting from decimal to binary
+    elif operator == 'b':
+        x = int(input('Enter the number: '))
+        print(f'Decimal converted to binary: {bin(x)}')
 
     # Exit the program
     elif operator == 'x':
