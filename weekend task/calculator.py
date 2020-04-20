@@ -3,14 +3,14 @@
 
 name = input('Please enter your name: ')
 
-# Brings a name to a normal format
+# Brings a name to a normal format. Subject to suddenly a double name.
 name = name.split()
 name = ' '.join(name)
 name = name.lower().title()
 
 operator = None
 
-while operator != 'x':
+while True:
 
     operator = input((f'{name}, select an operation from the following list:\n'
                       f'Available operations:\naddition (+)\nsubtraction (-)\n'
@@ -96,3 +96,5 @@ while operator != 'x':
 
     else:
         print('You entered an incorrect character!!!')
+
+# Не виходить поки що завдання з зірочкою(((
