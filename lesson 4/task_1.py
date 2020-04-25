@@ -4,6 +4,8 @@ import random
 
 l = [random.randint(0,100) for i in range(10)]
 
+print(max(l))
+
 n = len(l)
 i = 0
 while i < n - 1:
