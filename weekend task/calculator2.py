@@ -1,4 +1,5 @@
 
+#ПОКА ТАК((
 # calculator with a question
 
 name = input('Please enter your name: ')
@@ -14,7 +15,7 @@ print(f'{name}, select an operation from the following list:\n'
                       f'\nremainder of division of numbers (%)\nraise the number to the degree (**)'
                       f'\nround off the number (r)\nfind the square of the number (sq)'
                       f'\nconverting from decimal to binary (b)\nthe command for adding two numbers (s)'
-                      f'\nbitwise operation EXCLUSIVELY OR (^)'
+                      f'\nbitwise operation EXCLUSIVELY OR (^)\nsquare root of (sqrt)'
                       f'\nexit the program (x)')
 
 operator = None

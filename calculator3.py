@@ -13,8 +13,7 @@ print(f'{name}, select an operation from the following list:\n'
                       f'multiplication (*)\ndivision (/)\ndivision is complete (//)'
                       f'\nremainder of division of numbers (%)\nraise the number to the degree (**)'
                       f'\nround off the number (r)\nfind the square of the number (sq)'
-                      f'\nconverting from decimal to binary (b)\nthe command for adding two numbers (s)'
-                      f'\nbitwise operation EXCLUSIVELY OR (^)'
+                      f'\nconverting from decimal to binary (b)\noperations with two numbers (op)'
                       f'\nexit the program (x)')
 
 operator = None
@@ -92,37 +91,28 @@ while True:
         x = x.replace(" ", "")
         print(f'Decimal converted to binary: {bin(int(x))}')
 
-    oper = {'+', '-', '^', '*', '/', 'sqrt'}      #NEW BLOCK
-    op = input('Enter the command for two numbers: ')
-    if '+' in oper:
-        op = op.split('+', 2)
-    print('the sum of two numbers:', + int(op[0]) + int(op[1]))
-    if '^' in oper:
-        op = op.split('^', 2)
-    print('bitwise operation EXCLUSIVELY OR:', + int(op[0]) ^ int(op[1]))
-
-    # The command for adding two numbers:
-    '''elif operator == 's':
-        op = input('Enter the command add two numbers: ').split('+', 2)
-        print(int(op[0]) + int(op[1]))
-    # Bitwise operation EXCLUSIVELY OR
-    elif operator == '^':
-        op = input('Enter bitwise operation EXCLUSIVELY OR: ').split('^', 2)
-        print(int(op[0]) ^ int(op[1]))
-    # The square root of number command
-    elif operator == 'sqrt':
-        import math
-        op = input('Enter the square root of: ').split('sqrt', )
-        x = int(op[1])
-        print(math.sqrt(x))'''
+    elif operator == 'op':
+        print("available operations '+',  '^', 'sqrt'")
+        oper = {'+',  '^', 'sqrt'}  # NEW BLOCK
+        op = input('Enter the command for two numbers: ')
+        if '+' in oper and op:
+            op = op.split('+', 2)
+        print('the sum of two numbers:', + int(op[0]) + int(op[1]))
+        if '^' in oper and op:
+            op = op.split('^', 2)
+        print('bitwise operation EXCLUSIVELY OR:', + int(op[0]) ^ int(op[1]))
+        if 'sqrt' in oper and op:
+            import math
+            op = int(op[1])
+        print('the square root is: ', + math.sqrt(op))
 
     # Exit the program
-    if operator == 'x':
+    elif operator == 'x':
         print('Thank you, i hope you enjoyed working)')
         break
 
-   # else:
-       # print('You entered an incorrect character!!!')
+    else:
+        print('You entered an incorrect character!!!')
 
 
 
