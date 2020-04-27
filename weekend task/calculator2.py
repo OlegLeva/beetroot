@@ -1,5 +1,6 @@
 
-#ПОКА ТАК((
+#ПОКА ТАК(( ковыряю, не могу справиться с ошибками, но ничё))
+
 # calculator with a question
 
 name = input('Please enter your name: ')
@@ -104,7 +105,7 @@ while True:
     elif operator == 'sqrt':
         import math
         op = input('Enter the square root of: ').split('sqrt', )
-        x = int(op[1])
+        x = int(op[0])
         print(math.sqrt(x))
 
     # Exit the program
