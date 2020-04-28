@@ -4,8 +4,10 @@ import random
 
 l = [random.randint(0,100) for i in range(10)]
 
+# 1 way
 print(max(l))
 
+# 2 way
 n = len(l)
 i = 0
 while i < n - 1:
@@ -16,5 +18,9 @@ while i < n - 1:
         j += 1
     i += 1
 
+print(l[-1])
+
+# 3 way
+l = sorted(l)
 print(l[-1])
 
