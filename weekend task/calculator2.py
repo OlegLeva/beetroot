@@ -38,6 +38,7 @@ while True:
             print(f'Addition of numbers is equal to: {float(x) + float(y)}')
         else:
             print('Enter the correct command!')
+            continue
     # subtracting
     elif operator == '-':
         x = input('Enter the first number: ')
