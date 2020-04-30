@@ -25,6 +25,7 @@ def val_conv(item):
     return None
 
 def operation(a, b):
+    '''mathematical operations with two data'''
     x = val_conv(a)
     y = val_conv(b)
     if operator == '+':
@@ -73,6 +74,7 @@ def operation(a, b):
         return (f'bitwise operation EXCLUSIVELY OR:  {int(x) ^ int(y)}')
 
 def one_x(a):
+    '''mathematical operations with one input'''
     x = val_conv(a)
     if operator == 'sq':
         if x is None:
@@ -86,6 +88,7 @@ def one_x(a):
 
 
 while True:
+    '''input processing'''
     operator = input(f'please select the operation you need: ')
     operator = operator.replace(" ", "")
     tup_op = ('+', '*', '/', '-', '//', '%', '**', 'r', 'b')
@@ -96,11 +99,6 @@ while True:
             continue
         print(f'Result: {o}')
 
-    # Exit the program
-    elif operator == 'x':
-        print('Thank you, i hope you enjoyed working)')
-        break
-
     elif operator == 'sq':
         o = one_x(input('X: '))
         if o is None:
@@ -110,6 +108,11 @@ while True:
 
     elif operator == 's':
         o = input('Enter the command add two numbers: ').split('+', 2)
+        try: #ПСИХАНУЛ И РАЗОБРАЛСЯ в try
+            op = operation((o[0]), (o[1]))
+        except IndexError:
+            print('You entered the wrong characters!')
+            continue
         op = operation((o[0]), (o[1]))
         if op is None:
             print('You entered the wrong characters!')
@@ -118,8 +121,11 @@ while True:
 
     elif operator == '^':
         o = input('Enter bitwise operation EXCLUSIVELY OR: ').split('^', 2)
-        if o[2] in o:
+        try:
+            op = operation((o[0]), (o[1]))
+        except IndexError:
             print('You entered the wrong characters!')
+            continue
         op = operation((o[0]), (o[1]))
         if op is None:
             print('You entered the wrong characters!')
@@ -133,6 +139,11 @@ while True:
             print('You entered the wrong characters!')
             continue
         print(f'Result: {op}')
+
+        # Exit the program
+    elif operator == 'x':
+        print('Thank you, i hope you enjoyed working)')
+        break
 
     else:
         print('You entered an incorrect character!!!')
