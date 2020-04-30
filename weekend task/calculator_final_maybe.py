@@ -17,7 +17,6 @@ print(f'{name}, select an operation from the following list:\n'
                       f'\nbitwise operation EXCLUSIVELY OR (^)\nsquare root of (sqrt)'
                       f'\nexit the program (x)')
 
-
 def val_conv(item):
     '''validation and immediate conversion'''
     if item.replace(".", "", 1).isdigit():
@@ -108,11 +107,8 @@ while True:
 
     elif operator == 's':
         o = input('Enter the command add two numbers: ').split('+', 2)
-        try: #ПСИХАНУЛ И РАЗОБРАЛСЯ в try
-            op = operation((o[0]), (o[1]))
-        except IndexError:
+        if '+' not in o:
             print('You entered the wrong characters!')
-            continue
         op = operation((o[0]), (o[1]))
         if op is None:
             print('You entered the wrong characters!')
@@ -121,9 +117,7 @@ while True:
 
     elif operator == '^':
         o = input('Enter bitwise operation EXCLUSIVELY OR: ').split('^', 2)
-        try:
-            op = operation((o[0]), (o[1]))
-        except IndexError:
+        if '^' not in o:
             print('You entered the wrong characters!')
             continue
         op = operation((o[0]), (o[1]))
