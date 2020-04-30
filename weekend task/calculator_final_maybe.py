@@ -77,7 +77,12 @@ def one_x(a):
     if operator == 'sq':
         if x is None:
             return None
-        return x **(1/2)
+        return (f'The square root of the number is: {float(x) **(1/2)}')
+    if operator == 'sqrt':
+        from math import sqrt
+        if x is None:
+            return None
+        return (f'square root: {sqrt(x)}')
 
 
 while True:
@@ -114,6 +119,13 @@ while True:
     elif operator == '^':
         op = input('Enter bitwise operation EXCLUSIVELY OR: ').split('^', 2)
         o = operation((op[0]), (op[1]))
+        if o is None:
+            print('You entered the wrong characters!')
+            continue
+        print(f'Result: {o}')
+    elif operator == 'sqrt':
+        op = input('Enter the square root of: ').split('sqrt', )
+        o = one_x((op[0]))
         if o is None:
             print('You entered the wrong characters!')
             continue
