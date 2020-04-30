@@ -59,6 +59,18 @@ def operation(a, b):
         if x is None or y is None:
             return None
         return (f'round off the number: {round(float(x), int(y))}')
+    if operator == 'b':
+        if x is None or y is None:
+            return None
+        return (f'Decimal converted to binary: {bin(int(x))}')
+    if operator == 's':
+        if x is None or y is None:
+            return None
+        return (f'the sum of two numbers:  {int(x) + int(y)}')
+    if operator == '^':
+        if x is None or y is None:
+            return None
+        return (f'bitwise operation EXCLUSIVELY OR:  {int(x) ^ int(y)}')
 
 def one_x(a):
     x = val_conv(a)
@@ -68,37 +80,45 @@ def one_x(a):
         return x **(1/2)
 
 
-
 while True:
-    operator = None
+    operator = input(f'please select the operation you need: ')
+    operator = operator.replace(" ", "")
+    tup_op = ('+', '*', '/', '-', '//', '%', '**', 'r', 'b')
+    if operator in tup_op:
+        o = operation(input('X: '), input('Y: '))
+        if o is None:
+            print('You entered the wrong characters!')
+            continue
+        print(f'Result: {o}')
+
     # Exit the program
-    if operator == 'x':
+    elif operator == 'x':
         print('Thank you, i hope you enjoyed working)')
         break
 
-    while True:
-        operator = input(f'please select the operation you need: ')
-        operator = operator.replace(" ", "")
-        #if operator == '+' or '*' or '/' or '-' or '//' or '%' or '**' or 'r':
-            o = operation(input('X: '), input('Y: '))
-            if o is None:
-                print('You entered the wrong characters!')
-                continue
-            print(f'Result: {o}')
-            break
-        elif operator == 'sq':
-            o = one_x(input('X: '))
-            if o is None:
-                print('You entered the wrong characters!')
-                continue
-            print(f'Result: {o}')
-            break
+    elif operator == 'sq':
+        o = one_x(input('X: '))
+        if o is None:
+            print('You entered the wrong characters!')
+            continue
+        print(f'Result: {o}')
 
+    elif operator == 's':
+        op = input('Enter the command add two numbers: ').split('+', 2)
+        o = operation((op[0]), (op[1]))
+        if o is None:
+            print('You entered the wrong characters!')
+            continue
+        print(f'Result: {o}')
 
-        else:
-            print('You entered an incorrect character!!!')
+    elif operator == '^':
+        op = input('Enter bitwise operation EXCLUSIVELY OR: ').split('^', 2)
+        o = operation((op[0]), (op[1]))
+        if o is None:
+            print('You entered the wrong characters!')
+            continue
+        print(f'Result: {o}')
 
+    else:
+        print('You entered an incorrect character!!!')
 
-#operator in ('//', '**', '+', '')
-
-#operator == "/" or operator == "-"
