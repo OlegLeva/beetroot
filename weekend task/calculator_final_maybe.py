@@ -109,27 +109,30 @@ while True:
         print(f'Result: {o}')
 
     elif operator == 's':
-        op = input('Enter the command add two numbers: ').split('+', 2)
-        o = operation((op[0]), (op[1]))
-        if o is None:
+        o = input('Enter the command add two numbers: ').split('+', 2)
+        op = operation((o[0]), (o[1]))
+        if op is None:
             print('You entered the wrong characters!')
             continue
-        print(f'Result: {o}')
+        print(f'Result: {op}')
 
     elif operator == '^':
-        op = input('Enter bitwise operation EXCLUSIVELY OR: ').split('^', 2)
-        o = operation((op[0]), (op[1]))
-        if o is None:
+        o = input('Enter bitwise operation EXCLUSIVELY OR: ').split('^', 2)
+        if o[2] in o:
+            print('You entered the wrong characters!')
+        op = operation((o[0]), (o[1]))
+        if op is None:
             print('You entered the wrong characters!')
             continue
-        print(f'Result: {o}')
+        print(f'Result: {op}')
+
     elif operator == 'sqrt':
-        op = input('Enter the square root of: ').split('sqrt', )
-        o = one_x((op[0]))
-        if o is None:
+        o = input('Enter the square root of: ').split('sqrt', )
+        op = one_x((o[0]))
+        if op is None:
             print('You entered the wrong characters!')
             continue
-        print(f'Result: {o}')
+        print(f'Result: {op}')
 
     else:
         print('You entered an incorrect character!!!')
