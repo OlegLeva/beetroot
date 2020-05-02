@@ -17,4 +17,5 @@ print(f'{name}, select an operation from the following list:\n'
                       f'\nbitwise operation EXCLUSIVELY OR (^)\nsquare root of (sqrt)'
                       f'\nexit the program (x)')
 
-import t
+from check_operator import input_operator
+input_operator()
