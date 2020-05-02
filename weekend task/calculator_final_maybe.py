@@ -1,27 +1,32 @@
 
 # calculator with a question
 
-name = input('Please enter your name: ')
+def menu():
+    name = input('Please enter your name: ')
 
-# Brings a name to a normal format. Subject to suddenly a double name.
-name = name.split()
-name = ' '.join(name)
-name = name.lower().title()
+    # Brings a name to a normal format. Subject to suddenly a double name.
+    name = name.split()
+    name = ' '.join(name)
+    name = name.lower().title()
 
-print(f'{name}, select an operation from the following list:\n'
-                      f'Available operations:\naddition (+)\nsubtraction (-)\n'
-                      f'multiplication (*)\ndivision (/)\ndivision is complete (//)'
-                      f'\nremainder of division of numbers (%)\nraise the number to the degree (**)'
-                      f'\nround off the number (r)\nfind the square of the number (sq)'
-                      f'\nconverting from decimal to binary (b)\nthe command for adding two numbers (s)'
-                      f'\nbitwise operation EXCLUSIVELY OR (^)\nsquare root of (sqrt)'
-                      f'\nexit the program (x)')
+    print(f'{name}, select an operation from the following list:\n'
+                          f'Available operations:\naddition (+)\nsubtraction (-)\n'
+                          f'multiplication (*)\ndivision (/)\ndivision is complete (//)'
+                          f'\nremainder of division of numbers (%)\nraise the number to the degree (**)'
+                          f'\nround off the number (r)\nfind the square of the number (sq)'
+                          f'\nconverting from decimal to binary (b)\nthe command for adding two numbers (s)'
+                          f'\nbitwise operation EXCLUSIVELY OR (^)\nsquare root of (sqrt)'
+                          f'\nexit the program (x)')
 
 def val_conv(item):
     '''validation and immediate conversion'''
     if item.replace(".", "", 1).isdigit():
         return float(item)
     return None
+def negativ_conv(negativ):
+    if '-' in negativ:
+        if negativ.replace("-", "", 1).isdigit():
+            return (float(negativ))
 
 def operation(a, b):
     '''mathematical operations with two data'''
