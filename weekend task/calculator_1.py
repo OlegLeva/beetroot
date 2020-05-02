@@ -16,4 +16,5 @@ print(f'{name}, select an operation from the following list:\n'
                       f'\nconverting from decimal to binary (b)\nthe command for adding two numbers (s)'
                       f'\nbitwise operation EXCLUSIVELY OR (^)\nsquare root of (sqrt)'
                       f'\nexit the program (x)')
-import ch
+
+import t
