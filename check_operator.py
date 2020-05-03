@@ -1,9 +1,8 @@
-def input_operator():
-    from test_1 import operation, one_x
+def input_operator(operator):
+
     while True:
         '''input processing'''
-        operator = input(f'please select the operation you need: ')
-        operator = operator.replace(" ", "")
+
         tup_op = ('+', '*', '/', '-', '//', '%', '**', 'r', 'b')
         if operator in tup_op:
             o = operation(input('X: '), input('Y: '))

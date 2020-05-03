@@ -4,36 +4,12 @@
 name = input('Please enter your name: ')
 
 # Brings a name to a normal format. Subject to suddenly a double name.
-name = name.split()
-name = ' '.join(name)
-name = name.lower().title()
+import check_namemenu
+check_namemenu.menu(name)
 
-print(f'{name}, select an operation from the following list:\n'
-                      f'Available operations:\naddition (+)\nsubtraction (-)\n'
-                      f'multiplication (*)\ndivision (/)\ndivision is complete (//)'
-                      f'\nremainder of division of numbers (%)\nraise the number to the degree (**)'
-                      f'\nround off the number (r)\nfind the square of the number (sq)'
-                      f'\nconverting from decimal to binary (b)\nthe command for adding two numbers (s)'
-                      f'\nbitwise operation EXCLUSIVELY OR (^)\nsquare root of (sqrt)'
-                      f'\nexit the program (x)')
+# syntax check
+from val_conv5 import val_conv
 
-
-def val_conv(s):
-    """validation and immediate conversion"""
-    s = s.strip()
-    if not s:
-        return
-    # syntax check
-    tmp = s
-    if s[0] in "+-":
-        tmp = s[1:]
-    pieces = tmp.split(".")
-    if len(pieces) > 2:
-        return
-    for p in pieces:
-        if not p or not p.isdigit():
-            return
-    return float(s)
 
 
 def operation(a, b):
@@ -41,6 +17,7 @@ def operation(a, b):
     oper = operator
     x = val_conv(a)
     y = val_conv(b)
+
 
     if x is None or y is None:
         return None
