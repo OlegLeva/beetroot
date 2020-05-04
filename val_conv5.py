@@ -13,3 +13,4 @@ def val_conv(s):
         if not p or not p.isdigit():
             return
     return float(s)
+
