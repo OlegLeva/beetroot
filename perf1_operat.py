@@ -29,16 +29,5 @@ def addauto(x, y):
     return f'the sum of two numbers:  {int(x) + int(y)}'
 def bit(x, y):
     return f'bitwise operation EXCLUSIVELY OR:  {int(x) ^ int(y)}'
-
-"""oper = { '+': add(),
-         '*': mult(),
-         '/': div(),
-         '-': sub(),
-         '//': divb(),
-         '%': divby(),
-         '**': deg(),
-         'r': round(),
-         'b': bin(),
-         's': addauto(),
-         '^': bit()
-         }"""
+def sq1(x):
+    return f'The square root of the number is: {float(x) **(1/2)}'
