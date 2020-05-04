@@ -71,12 +71,10 @@ while True:
         print('Thank you, i hope you enjoyed working)')
         break
 
-    if operator not in tup_op1:
+    if operator not in tup_op1 or tup_op2:
         print('You entered an incorrect character!!!')
         continue
-    elif operator not in tup_op2:
-        print('You entered an Incorrect character!!!')
-        continue
+
 
 
 
