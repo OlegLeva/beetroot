@@ -9,54 +9,35 @@ check_namemenu.menu(name)
 # syntax check
 from val_conv5 import val_conv
 
+
 def operation(a, b):
-    '''mathematical operations with two data'''
+    """mathematical operations with two data"""
     x = val_conv(a)
     y = val_conv(b)
+    if x is None or y is None:
+        return None
     if operator == '+':
-        if x is None or y is None:
-            return None
-        return (f'Addition: {float(x) + float(y)}')
+        return f'Addition: {float(x) + float(y)}'
     if operator == '*':
-        if x is None or y is None:
-            return None
-        return (f'multiplication: {float(x) * float(y)}')
+        return f'multiplication: {float(x) * float(y)}'
     if operator == '/':
-        if x is None or y is None:
-            return None
-        return (f'division: {float(x) / float(y)}')
+        return f'division: {float(x) / float(y)}'
     if operator == '-':
-        if x is None or y is None:
-            return None
-        return (f'subtraction: {float(x) - float(y)}')
+        return f'subtraction: {float(x) - float(y)}'
     if operator == '//':
-        if x is None or y is None:
-            return None
-        return (f'division is complete: {float(x) // float(y)}')
+        return f'division is complete: {float(x) // float(y)}'
     if operator == '%':
-        if x is None or y is None:
-            return None
-        return (f'remainder of division of numbers: {float(x) % float(y)}')
+        return f'remainder of division of numbers: {float(x) % float(y)}'
     if operator == '**':
-        if x is None or y is None:
-            return None
-        return (f'raise the number to the degree: {float(x) ** float(y)}')
+        return f'raise the number to the degree: {float(x) ** float(y)}'
     if operator == 'r':
-        if x is None or y is None:
-            return None
-        return (f'round off the number: {round(float(x), int(y))}')
+        return f'round off the number: {round(float(x), int(y))}'
     if operator == 'b':
-        if x is None or y is None:
-            return None
-        return (f'Decimal converted to binary: {bin(int(x))}')
+        return f'Decimal converted to binary: {bin(int(x))}'
     if operator == 's':
-        if x is None or y is None:
-            return None
-        return (f'the sum of two numbers:  {int(x) + int(y)}')
+        return f'the sum of two numbers:  {int(x) + int(y)}'
     if operator == '^':
-        if x is None or y is None:
-            return None
-        return (f'bitwise operation EXCLUSIVELY OR:  {int(x) ^ int(y)}')
+        return f'bitwise operation EXCLUSIVELY OR:  {int(x) ^ int(y)}'
 
 def one_x(a):
     '''mathematical operations with one input'''
