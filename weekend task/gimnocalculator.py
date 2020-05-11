@@ -1,13 +1,12 @@
 # calculator with a question
 
+from val_conv5 import val_conv # syntax check
+import check_namemenu
+
 name = input('Please enter your name: ')
 
 # Brings a name to a normal format. Subject to suddenly a double name.
-import check_namemenu
 check_namemenu.menu(name)
-
-# syntax check
-from val_conv5 import val_conv
 
 
 def operation(a, b):
@@ -39,18 +38,19 @@ def operation(a, b):
     if operator == '^':
         return f'bitwise operation EXCLUSIVELY OR:  {int(x) ^ int(y)}'
 
+
 def one_x(a):
-    '''mathematical operations with one input'''
+    """mathematical operations with one input"""
     x = val_conv(a)
     if operator == 'sq':
         if x is None:
             return None
-        return (f'The square root of the number is: {float(x) **(1/2)}')
+        return f'The square root of the number is: {float(x) **(1/2)}'
     if operator == 'sqrt':
         from math import sqrt
         if x is None:
             return None
-        return (f'square root: {sqrt(x)}')
+        return f'square root: {sqrt(x)}'
 
 
 while True:
