@@ -22,5 +22,13 @@
         "phone": "artjryj",
         "region": "Arjsr",
         "city": "Artjr"
+    },
+    {
+        "first_name": "Oleg",
+        "last_name": "Levitskiy",
+        "full_name": "Oleg Levitskiy",
+        "phone": "+380509000000",
+        "region": "Poltava",
+        "city": "Kremenchug"
     }
 ]
