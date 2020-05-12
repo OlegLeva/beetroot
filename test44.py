@@ -31,7 +31,7 @@ Algorithm:
 """
 import json
 
-json_file = open('new.json')
+json_file = open('new.json' 'w')
 try:
     phonebook = json.load(json_file)
 except json.decoder.JSONDecodeError:
@@ -81,7 +81,7 @@ try:
                 if item['first_name'] == query:
                     print('Found person:')
                     print(item)
-                    action = input("""What to do next: 
+                    action = input("""What to do next:
                     next - search next record
                     delete - remvoe record
                     menu - return to menu
