@@ -13,12 +13,13 @@
 
 """
 
-
+import sys
 import json
 from task_2_func import add_f, search_first, search_last, search_full,\
     search_phone, search_region, search_citi, update_q, del_q
 
-f = open("myphonebook.json")
+filename = sys.argv[1]
+f = open(filename)
 
 try:
     phb = json.load(f)
@@ -79,5 +80,5 @@ except Exception as e:
     print('Erorr')
     print(e)
 finally:
-    with open('myphonebook.json', 'w') as f:
+    with open(filename, 'w') as f:
         json.dump(phb, f, indent=4)
