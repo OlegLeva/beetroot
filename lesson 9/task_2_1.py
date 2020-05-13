@@ -9,11 +9,14 @@
 7. Добавляем функции поиска, обновления данных по телефону,
    удаления элемента по телефону с JSON файла и выход из программы
 8. добавляем файнели: после выхода с программы записываем все данные в файл JSON
+9. создаю другой файл и запаковываю все действия в функции и импортируем их в программу.
 
 """
 
-import json
 
+import json
+from task_2_func import add_f, search_first, search_last, search_full,\
+    search_phone, search_region, search_citi, update_q, del_q
 
 f = open("myphonebook.json")
 
@@ -36,90 +39,40 @@ try:
     while True:
         command = input('Select command: ').strip().lower()
         if command == 'add':
-            first_name = input('Enter first name: ').strip().lower().title()
-            last_name = input('Enter last name: ').strip().lower().title()
-            full_name = first_name + ' ' + last_name
-            phone = input('Enter phone: ')
-            region = input('Enter region: ').strip().lower().title()
-            city = input('Print city: ').strip().lower().title()
-            new_dict = dict_pattern.copy()
-            new_dict['first_name'] = first_name
-            new_dict['last_name'] = last_name
-            new_dict['full_name'] = full_name
-            new_dict['phone'] = phone
-            new_dict['region'] = region
-            new_dict['city'] = city
-            phb.append(new_dict)
+            add_f(phb, dict_pattern)
+
         elif command == 'search first name':
             query = input('First name: ').strip().lower().title()
-            for item in phb:
-                if item['first_name'] == query:
-                    print('Found person:')
-                    print(item)
-                    break
+            search_first(query, phb)
+
         elif command == 'search last name':
             query = input('Last name: ').strip().lower().title()
-            for item in phb:
-                if item['last_name'] == query:
-                    print('Found person:')
-                    print(item)
-                    break
+            search_last(query, phb)
+
         elif command == 'search full name':
             query = input('Full name: ').strip().lower().title()
-            for item in phb:
-                if item['full_name'] == query:
-                    print('Found person:')
-                    print(item)
-                    break
+            search_full(query, phb)
+
         elif command == 'search phone':
             query = input('Phone: ')
-            for item in phb:
-                if item['phone'] == query:
-                    print('Found person:')
-                    print(item)
-                    break
+            search_phone(query, phb)
+
         elif command == 'search city':
             query = input('City: ').strip().lower().title()
-            for item in phb:
-                if item['city'] == query:
-                    print('Found person:')
-                    print(item)
-                    break
+            search_citi(query, phb)
         elif command == 'search region':
             query = input('Region: ').strip().lower().title()
-            for item in phb:
-                if item['region'] == query:
-                    print('Found person:')
-                    print(item)
-                    break
+            search_region(query, phb)
+
         elif command == 'exit':
             break
         elif command == 'update':
             query = input('Phone: ')
-            for item in phb:
-                if item['phone'] == query:
-                    phb.remove(item)
-                    first_name = input('Enter first name: ').strip().lower().title()
-                    last_name = input('Enter last name: ').strip().lower().title()
-                    full_name = first_name + ' ' + last_name
-                    phone = input('Enter phone: ')
-                    region = input('Enter region: ').strip().lower().title()
-                    city = input('Print city: ').strip().lower().title()
-                    new_dict = dict_pattern.copy()
-                    new_dict['first_name'] = first_name
-                    new_dict['last_name'] = last_name
-                    new_dict['full_name'] = full_name
-                    new_dict['phone'] = phone
-                    new_dict['region'] = region
-                    new_dict['city'] = city
-                    phb.append(new_dict)
-                    break
+            update_q(dict_pattern, query, phb)
+
         elif command == 'delete':
             query = input('Phone: ')
-            for item in phb:
-                if item['phone'] == query:
-                    phb.remove(item)
-                    break
+            del_q(query, phb)
 
 
 except Exception as e:
