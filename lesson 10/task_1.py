@@ -7,7 +7,7 @@ class Person():
         self.age = age
 
     def talk(self):
-        print(f'Hello, my name is {self.last_name} {self.first_name} and I’m {self.age} years old”')
+        return (f'Hello, my name is {self.last_name} {self.first_name} and I’m {self.age} years old”')
 
 
 person1 = Person("Carl", "Johnson", 26)
