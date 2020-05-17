@@ -3,10 +3,7 @@ CHANNELS = ["BBC", "Discovery", "TV1000VIP", "TV1000"]
 i = 0
 
 class TVController:
-    BBC = ""
-    Discovery = ""
-    TV1000VIP = ""
-    TV1000 = ""
+    pass
 
 
     def __init__(self, BBC, Discovery, TV1000VIP, TV1000):
@@ -16,20 +13,26 @@ class TVController:
         self.TV1000 = TV1000
 
 
-    n = input("Enter command or channel number: ")
     def first_chanel(self):
         return CHANNELS[i]
 
     def last_channel(self):
-        return CHANNELS[-1]
+        i = -1
+        return CHANNELS[i]
 
-    def turn_channel(self):
-        return CHANNELS[int(n)-1]
+
+n = input("Enter command or channel number: ")
+
+ #       def turn_channel(self):
+ #           i = int(n) - 1
+ #           return CHANNELS[i]
 
   #  def next_channel(self):
-   #     if CHANNELS[]
 
+controller = TVController(*CHANNELS)
 
-controller = TVController(CHANNELS)
-
-print(controller.turn_channel())
+if n == "first":
+    print(controller.first_chanel())
+if n == "last":
+    print(controller.last_channel())
+#if n.isdigit():
