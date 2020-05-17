@@ -1,5 +1,5 @@
 
-CHANNELS = ["BBC", "Discovery","TV1000VIP", "TV1000"]
+CHANNELS = ["BBC", "Discovery", "TV1000VIP", "TV1000"]
 i = 0
 
 class TVController:
@@ -11,7 +11,7 @@ class TVController:
 
     def __init__(self, BBC, Discovery, TV1000VIP, TV1000):
         self.BBC = BBC
-        self.Discoverry = Discovery
+        self.Discovery = Discovery
         self.TV1000VIP = TV1000VIP
         self.TV1000 = TV1000
 

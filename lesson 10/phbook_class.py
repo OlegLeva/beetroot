@@ -35,20 +35,26 @@ class PhoneBook():
             "city": self.city
         }
 
+    def inpt_name(self):
+        self.first_name = input('Enter first name: ').strip().lower().title()
+        self.last_name = input('Enter last name: ').strip().lower().title()
+        self.full_name = self.first_name + ' ' + self.last_name
+        self.phone = input('Enter phone: ')
+        self.region = input('Enter region: ').strip().lower().title()
+        self.city = input('Enter city: ').strip().lower().title()
 
-first_name = input('Enter first name: ').strip().lower().title()
-last_name = input('Enter last name: ').strip().lower().title()
-full_name = first_name + ' ' + last_name
-phone = input('Enter phone: ')
-region = input('Enter region: ').strip().lower().title()
-city = input('Enter city: ').strip().lower().title()
+
 
 new_ph = PhoneBook("first_name", "last_name", "full_name", "phone", "region", "city")
+
+new_ph.inpt_name()
+print(new_ph.convert())
 
 try:
     phb = json.load(open('test.json'))
 except json.decoder.JSONDecodeError:
     phb = []
+
 
 new_list = []
 for item in phb:
