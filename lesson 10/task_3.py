@@ -1,6 +1,6 @@
 
 CHANNELS = ["BBC", "Discovery", "TV1000VIP", "TV1000"]
-i = 0
+
 
 class TVController:
     pass
@@ -20,19 +20,47 @@ class TVController:
         i = -1
         return CHANNELS[i]
 
+    def turn_channel(self):
+        i = int(n) - 1
+        return CHANNELS[i]
 
-n = input("Enter command or channel number: ")
+    def next_channel(self):
+        global i
+        if CHANNELS[i] == CHANNELS[-1]:
+            i = 0
+            return CHANNELS[i]
+        else:
+            return CHANNELS[i+1]
 
- #       def turn_channel(self):
- #           i = int(n) - 1
- #           return CHANNELS[i]
+    def previous_channel(self):
+        global i
+        if CHANNELS[i] == CHANNELS[0]:
+            i = -1
+            return CHANNELS[i]
+        else:
+            return CHANNELS[i-1]
 
-  #  def next_channel(self):
+    def current_channel(self):
+        return CHANNELS[i]
 
+i = 0
 controller = TVController(*CHANNELS)
 
-if n == "first":
-    print(controller.first_chanel())
-if n == "last":
-    print(controller.last_channel())
-#if n.isdigit():
+while True:
+
+    n = input("Enter command or channel number: ")
+
+    if n == "first":
+        print(controller.first_chanel())
+    if n == "last":
+        print(controller.last_channel())
+    if n in "1234":
+        print(controller.turn_channel())
+    if n == "next":
+        print(controller.next_channel())
+    if n == "back":
+        print(controller.previous_channel())
+
+
+    if n == "x":
+        break

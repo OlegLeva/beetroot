@@ -48,7 +48,7 @@ class PhoneBook():
 new_ph = PhoneBook("first_name", "last_name", "full_name", "phone", "region", "city")
 
 new_ph.inpt_name()
-print(new_ph.convert())
+new_list1 = new_ph.convert()
 
 try:
     phb = json.load(open('test.json'))
@@ -62,6 +62,6 @@ for item in phb:
 
 new_list = [person.convert() for person in new_list]
 
-with open("test.json", 'w+') as f:
+with open("test.json", 'w') as f:
     json.dump(new_list, f, indent=4)
 
