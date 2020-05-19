@@ -42,6 +42,14 @@ class TVController:
         self.i = self.CHANNELS[self.number]
         return self.i
 
+    def is_exist(self, name):
+        if name in ["BBC", "Discovery", "TV1000VIP", "TV1000"]:
+            return "Yes"
+        if name in "1234":
+            return "Yes"
+        else:
+            return "No"
+
 
 controller = TVController()
 
@@ -61,6 +69,9 @@ while True:
         print(controller.previous_channel())
     if n == "c":
         print(controller.current_channel())
+    if n == "name":
+        name = input('Введите имя или номер канала: ')
+        print(controller.is_exist(name))
 
     if n == "x":
         break
