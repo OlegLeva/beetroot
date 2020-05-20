@@ -35,20 +35,20 @@ class PhoneBook():
             "city": self.city
         }
 
-    def inpt_name(self):
-        self.first_name = input('Enter first name: ').strip().lower().title()
-        self.last_name = input('Enter last name: ').strip().lower().title()
-        self.full_name = self.first_name + ' ' + self.last_name
-        self.phone = input('Enter phone: ')
-        self.region = input('Enter region: ').strip().lower().title()
-        self.city = input('Enter city: ').strip().lower().title()
+#    def inpt_name(self):
+#        self.first_name = input('Enter first name: ').strip().lower().title()
+#        self.last_name = input('Enter last name: ').strip().lower().title()
+#        self.full_name = self.first_name + ' ' + self.last_name
+#        self.phone = input('Enter phone: ')
+#       self.region = input('Enter region: ').strip().lower().title()
+#       self.city = input('Enter city: ').strip().lower().title()
 
 
 
-new_ph = PhoneBook("first_name", "last_name", "full_name", "phone", "region", "city")
+new_ph = PhoneBook(first_name = input("), "last_name", "full_name", "phone", "region", "city")
 
 new_ph.inpt_name()
-new_list1 = new_ph.convert()
+new_list = new_ph.convert()
 
 try:
     phb = json.load(open('test.json'))
