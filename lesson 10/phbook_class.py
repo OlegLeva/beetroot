@@ -1,4 +1,4 @@
-
+"""
 import json
 
 class PhoneBook():
@@ -47,7 +47,6 @@ class PhoneBook():
 
 new_ph = PhoneBook(first_name = input("), "last_name", "full_name", "phone", "region", "city")
 
-new_ph.inpt_name()
 new_list = new_ph.convert()
 
 try:
@@ -65,3 +64,4 @@ new_list = [person.convert() for person in new_list]
 with open("test.json", 'w') as f:
     json.dump(new_list, f, indent=4)
 
+"""
