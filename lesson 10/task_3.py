@@ -1,46 +1,41 @@
 class TVController:
     CHANNELS = ["BBC", "Discovery", "TV1000VIP", "TV1000"]
-    number = 0
+    number = 1
     i = ""
+
+    def get_current(self):
+        return self.CHANNELS[self.number - 1]
 
     def first_chanel(self):
         self.number = 1
-        self.i = self.CHANNELS[self.number - 1]
-        return self.i
+        return self.get_current()
 
     def last_channel(self):
         self.number = len(self.CHANNELS)
-        self.i = self.CHANNELS[self.number - 1]
-        return self.i
+        return self.get_current()
 
     def turn_channel(self):
-        self.number = int(n) - 1
-        self.i = self.CHANNELS[self.number]
-        return self.i
+        self.number = int(n)
+        return self.get_current()
 
     def next_channel(self):
         if self.number == len(self.CHANNELS):
             self.number = 1
-            self.i = self.CHANNELS[self.number - 1]
-            return self.i
+            return self.get_current()
         else:
             self.number += 1
-            self.i = self.CHANNELS[self.number - 1]
-            return self.i
+            return self.get_current()
 
     def previous_channel(self):
         if self.number == 1:
             self.number = len(self.CHANNELS)
-            self.i = self.CHANNELS[self.number - 1]
-            return self.i
+            return self.get_current()
         else:
             self.number -= 1
-            self.i = self.CHANNELS[self.number - 1]
-            return self.i
+            return self.get_current()
 
     def current_channel(self):
-        self.i = self.CHANNELS[self.number]
-        return self.i
+        return self.get_current()
 
     def is_exist(self, name):
         if name in ["BBC", "Discovery", "TV1000VIP", "TV1000"]:
