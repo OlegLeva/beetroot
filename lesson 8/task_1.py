@@ -2,13 +2,13 @@
 def oops():
     raise IndexError
 
-def catch(x):
-    return x
 
-try:
-    catch(oops())
-except IndexError:
-    print('IndexError caught')
+def catch():
+    try:
+        oops()
+    except IndexError:
+        return ('IndexError caught')
+print(catch())
 
 ###############################
 
@@ -26,7 +26,7 @@ except IndexError:
     print('IndexError caught')
 
 #################################
-
+'''
 
 def oops2():
     raise KeyError
@@ -38,10 +38,10 @@ try:
     catch2(oops2())
 except IndexError:
     print('IndexError caught')
-
+'''
 #################################
 
-def oops3():
+"""def oops3():
     q = {'J': 2, 'p': 3}
     return q['m']
 
@@ -51,4 +51,4 @@ def catch3(k):
 try:
     catch3(oops3())
 except IndexError:
-    print('IndexError caught')
+    print('IndexError caught')"""
