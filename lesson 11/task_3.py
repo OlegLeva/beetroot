@@ -1,38 +1,39 @@
+""" Додати товари з наявними параметрами
+на склад і вказати їх кількість"""
+
+
 class Product:
     type_prod = ""
     name_prod = ""
     price = 0.0
-    amount = 0
-    name_price = {}
 
     def __init__(self, type_prod, name_prod, price):
         self.type_prod = type_prod
         self.name_prod = name_prod
         self.price = price
-        self.name_price = {}
-
-p = Product('Sport', 'Football T-Shirt', 100)
-p2 = Product('Food', 'Ramen', 1.5)
 
 
-"""
-class ProductStore(Product):
+
+class ProductStore:
     pass
 
-    def add(self, name_prod, price):
-        self.name_price[name_prod] = price * 1.3
-"""
+    def add(self, name_instance, amout):
+        self.name_instance = name_instance
+        self.amout = amout
+        dict_amout = {self.name_instance: self.amout}
+        return produkt_list.append(dict_amout)
+
+"""    def __str__(self):
+        return (f'{produkt_list}')
+
+    def __repr__(self):
+        return (f'{produkt_list}')"""
 
 
+p = Product('Sport', 'Football T-Shirt', 100)
+p2 = Product('Food', 'Apple', 20)
+produkt_list = []
 
-"""
 s = ProductStore()
-
-s.add(p, 10)
-
-s.add(p2, 300)"""
-
-
-
-
-
+s.add(p2, 300)
+print(str(produkt_list))
