@@ -2,7 +2,7 @@
 
 import random
 
-l = [random.randint(0,100) for i in range(10)]
+l = [random.randint(0, 100) for i in range(10)]
 
 # 1 way
 print(max(l))
