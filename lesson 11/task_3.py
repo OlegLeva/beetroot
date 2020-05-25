@@ -11,17 +11,28 @@ class Product:
         self.price = price
         self.name_price = {}
 
+p = Product('Sport', 'Football T-Shirt', 100)
+p2 = Product('Food', 'Ramen', 1.5)
 
 
+"""
 class ProductStore(Product):
     pass
 
-    def add(self, price, name_prod):
+    def add(self, name_prod, price):
         self.name_price[name_prod] = price * 1.3
+"""
 
 
 
-avocado = ProductStore("fruit", 25.0, "Avocado")
-avocado.add(25, "Avocado")
+"""
+s = ProductStore()
+
+s.add(p, 10)
+
+s.add(p2, 300)"""
+
+
+
 
 

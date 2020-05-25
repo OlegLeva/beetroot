@@ -1,11 +1,27 @@
 [
     {
+        "city": "Kremen",
         "first_name": "Oleg",
         "last_name": "Lev",
-        "full_name": "Oleg Lev",
-        "phone": "+380509000000",
         "region": "Poltava",
-        "city": "Kremen"
+        "phone": "+380509000000",
+        "full_name": "Oleg Lev"
+    },
+    {
+        "first_name": "Eee",
+        "last_name": "Eeee",
+        "full_name": "Eee Eeee",
+        "phone": "eeeee",
+        "region": "Eeee",
+        "city": "Eeee"
+    },
+    {
+        "first_name": "Nik",
+        "last_name": "Lev",
+        "full_name": "Nik Lev",
+        "phone": "0509000090",
+        "region": "Poltava",
+        "city": "Kremenchug"
     },
     {
         "first_name": "Masha",
