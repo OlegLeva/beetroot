@@ -12,30 +12,29 @@ class Product:
         self.name_prod = name_prod
         self.price = price
 
+    def __str__(self):
+        return f"{self.name_prod} = {self.price}"
+
+    def __repr__(self):
+        return f"{self.name_prod} = {self.price}"
+
 
 
 class ProductStore:
-    pass
+    amount = 0
+    profit = 0
+    warehouse = []
 
-    def add(self, name_instance, amout):
-        self.name_instance = name_instance
-        self.amout = amout
-        self.produkt_list = produkt_list #єксперимент
-        dict_amout = {self.name_instance: self.amout}
-        return produkt_list.append(dict_amout)
-
-    def __str__(self):
-        return (f'{self.produkt_list}')
-
-    def __repr__(self):
-        return (f'{self.produkt_list}')
+    def add(self, produkt, amount):
+        t = {}
+        t["produkt"] = produkt
+        t["amount"] = amount
+        produkt.price += 1.3
+        self.warehouse.append(t)
 
 
-p = Product('Sport', 'Football T-Shirt', 100)
-p2 = Product('Food', 'Apple', 20)
-produkt_list = []
 
-s = ProductStore()
-s.add(p2, 300)
-print(f'{produkt_list}')
-print(str(produkt_list))
+first_product = Product("fruit", "apple", 10)
+
+store = ProductStore()
+store.add(first_product, 300)
