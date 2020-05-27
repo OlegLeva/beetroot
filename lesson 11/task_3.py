@@ -18,11 +18,10 @@ class Product:
             self.price = price
 
     def __str__(self):
-        return f"{self.name_prod} = {self.price}"
+        return f"{self.type_prod},  {self.name_prod} = {self.price}"
 
     def __repr__(self):
-        return f"{self.name_prod} = {self.price}"
-
+        return f"{self.type_prod}, {self.name_prod} = {self.price}"
 
 
 class ProductStore:
