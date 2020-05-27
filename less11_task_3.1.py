@@ -83,5 +83,21 @@ try:
     store.set_discount("apple", 20)
     store.get_all_product()
     store.product_info(first_product)
+    store.add(first_product, 1000)
+    store.product_info(first_product)
+    store.add(first_product, 200)
+    store.add(second_product, 50)
+    store.get_all_product()
+    store.sell_product(first_product, 10)
+    store.get_all_product()
+    store.get_income()
+    store.set_discount("apple", 20)
+    store.get_all_product()
+    store.product_info(first_product)
+    store.add(first_product, 1000)
+    store.product_info(first_product)
+
+
+
 except ValueError as e:
     print(e)
