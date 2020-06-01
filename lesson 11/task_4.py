@@ -15,6 +15,3 @@ try:
     raise CustomException("My CustomException")
 except CustomException as e:
     print(e)
-
-
-
