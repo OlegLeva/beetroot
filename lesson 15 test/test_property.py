@@ -29,6 +29,11 @@ class PhoneBook:
             raise ValueError("Не верный формат")
         self.__phone = phone_value
 
+    def __str__(self):
+        return f"name: {self.name} \nciti: {self.citi} \nphone: {self.phone}"
+    def __repr__(self):
+        return f"name: {self.name} \nciti: {self.citi} \nphone: {self.phone}"
+
     name = property(get_name, set_name)
     citi = property(get_citi, set_citi)
     phone = property(get_phone, set_phone)
@@ -40,6 +45,4 @@ k.name = "Olya"
 k.citi = "New York"
 k.phone = 12160000000
 
-print(k.get_name())
-print(k.get_citi())
-print(k.get_phone())
+print(k)
