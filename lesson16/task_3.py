@@ -24,11 +24,8 @@ l = my_list
 for i in l:
     print(i)
 
-for i in l:
-    print(i)
-
 for i in t:
     print(i)
-
-for i in t:
-    print(i)
+print()
+print(my_list[1])
+print(my_tuple[3])
