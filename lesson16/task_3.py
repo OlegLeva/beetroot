@@ -1,31 +1,14 @@
-
 class Iterator:
     def __init__(self, *args):
         self.args = args
-        self.index = 0
-
     def __iter__(self):
-        self.index = 0
-        return self
+        return iter(self.args)
+    def __getitem__(self, item):
+        return self.args[item]
 
-    def __next__(self):
-        if self.index >= len(self.args):
-            raise StopIteration
-        value = self.args[self.index]
-        value += 1
-        return value
+my_list = Iterator(1, 'u', 67, 'l', 555)
 
-my_list = [1, 'u', 67, 'l', 555]
-my_tuple = 3, 7, 0, 22, 90
+for i in my_list:
+     print(i)
 
-t = iter(my_tuple)
-l = my_list
-
-for i in l:
-    print(i)
-
-for i in t:
-    print(i)
-print()
-print(my_list[1])
-print(my_tuple[3])
+print(my_list[4])

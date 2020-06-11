@@ -11,9 +11,15 @@ print(with_index([6, 7, 2, 9]))
 
 
 def with_index_1(iterable_1, start_1=0):
-    while start_1 < len(iterable_1):
-        yield (start_1, iterable_1[start_1])
+    # if start_1 >= len(list(iterable_1)):
+    #      raise StopIteration
+    for i in iterable_1:
+        yield (start_1, i)
         start_1 += 1
-
-
-print(list(with_index_1([6, 7, 't', 9])))
+def gen():
+    for j in [6, 7, 8, 9]:
+        yield j
+generator = gen()
+g = with_index_1(generator)
+print(next(g))
+print(next(g))
