@@ -13,8 +13,8 @@
 
 
 def in_range1(start1=0, end1=None, step1=1):
-    if type(start1) != int or type(end1) != int or type(step1) != int:
-        raise TypeError('enter the number')
+    if start1 >= end1:
+        return []
     while start1 != end1:
         yield start1
         start1 += step1
