@@ -7,6 +7,8 @@ def count_chars(name):
         return len(f.read())
 
 def test(name):
-    lines = count_lines(name)
-    chars = count_chars(name)
+    with open(name) as f:
+        lines = len(f.readlines())
+        f.seek(0)
+        chars = len(f.read())
     return f"Lines: {lines} \nChars: {chars}"
