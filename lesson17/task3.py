@@ -2,7 +2,7 @@ from lesson17_file.mymod import count_lines, count_chars, test
 import sys
 
 
-sys.path.insert(1, "/Users/mymac/PycharmProjects/beetroot/lesson17_file/mymod.py")
+sys.path.insert(0, "/Users/mymac/PycharmProjects/beetroot/lesson17_file/mymod.py")
 # не хочет работать, или я не умею обращаться с терминалом(((
 #Думаю что PYTHONPATH включать каталог нужно, что бы можно было к нему обращаться по индексу.
 
