@@ -13,9 +13,10 @@
 def with_index_1(iterable_1, start_1=0):
     if start_1 >= len(list(iterable_1)):
         raise StopIteration
+    index = start_1
     for i in iterable_1:
-        yield (start_1, i)
-        start_1 += 1
+        yield (index, i)
+        index += 1
 
 
 def gen():

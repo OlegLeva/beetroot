@@ -1,3 +1,4 @@
+import os
 import datetime
 d = datetime.date.today()
 d1 = datetime.timedelta(weeks=2)
@@ -10,5 +11,6 @@ while i != 10:
     i += 1
 
 
-
+file_name = 't'
+print(os.path.exists(file_name))
 
