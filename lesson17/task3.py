@@ -1,14 +1,12 @@
-from lesson17_file.mymod import count_lines, count_chars, test
+
 import sys
 
+sys.path.insert(0, "E:\beetroot\lesson17_file\mymod.py")
 
-sys.path.insert(0, "/Users/mymac/PycharmProjects/beetroot/lesson17_file/mymod.py")
-# не хочет работать, или я не умею обращаться с терминалом(((
-#Думаю что PYTHONPATH включать каталог нужно, что бы можно было к нему обращаться по индексу.
+from lesson17_file import mymod
+
+print(mymod.count_lines("text.txt"))
+print(mymod.count_chars("text.txt"))
+print(mymod.test("text.txt"))
 
 
-print(count_lines("text.txt"))
-print(count_chars("text.txt"))
-print(test("text.txt"))
-
-#Наблюдаются постоянные проблемы неумения работы с терминалом(((
