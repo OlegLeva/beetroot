@@ -69,8 +69,7 @@ def equal(item1: Any, item2: Any = None) -> bool:
 print(equal(1, '1'))
 
 
-any_list: List[Union[int, str]] = [1, 2, 3, 4]
-any_list.append('7')
+any_list: List[Union[int, str]] = [1, 2, 3, 4, '7']
 
 help(equal)
 

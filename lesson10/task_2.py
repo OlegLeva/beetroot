@@ -1,4 +1,3 @@
-
 class Dog:
     age_factor = 7
 

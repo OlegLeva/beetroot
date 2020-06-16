@@ -86,7 +86,7 @@ def check_time(func):
 
 @check_time
 def calculate(x1, x2):
-    "Take x1 power to x2"
+    """Take x1 power to x2"""
     return x1 ** x2
 
 

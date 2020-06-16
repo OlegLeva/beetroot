@@ -15,13 +15,14 @@ def with_index_1(iterable_1, start_1=0):
         raise StopIteration
     index = start_1
     for i in iterable_1:
-        yield (index, i)
+        yield index, i
         index += 1
 
 
 def gen():
     for j in [6, 7, 8, 9]:
         yield j
+
 
 generator = gen()
 g = with_index_1(generator)

@@ -12,19 +12,19 @@
 9. создаю другой файл и запаковываю все действия в функции и импортируем их в программу.
 
 """
-from typing import Dict, List, Tuple, Union, Optional, Any, AnyStr
+from typing import Dict, List, Union, Any
 import json
 
 filename = "json1.json"
 f = open(filename)
 
 try:
-    phb = json.load(f)
+    phb: List[str] = json.load(f)
 except json.decoder.JSONDecodeError:
     phb = []
 f.close()
 
-dict_pattern = {
+dict_pattern: Dict[str, str] = {
     'first_name': '',
     'last_name': '',
     'full_name': '',
@@ -34,14 +34,14 @@ dict_pattern = {
 }
 
 
-def add_f(lst, dct):
-    first_name = input('Enter first name: ').strip().lower().title()
-    last_name = input('Enter last name: ').strip().lower().title()
-    full_name = first_name + ' ' + last_name
-    phone = input('Enter phone: ')
-    region = input('Enter region: ').strip().lower().title()
-    city = input('Print city: ').strip().lower().title()
-    new_dict = dct.copy()
+def add_f(lst: Any, dct: Any) -> List:
+    first_name: str = input('Enter first name: ').strip().lower().title()
+    last_name: str = input('Enter last name: ').strip().lower().title()
+    full_name: str = first_name + ' ' + last_name
+    phone: str = input('Enter phone: ')
+    region: str = input('Enter region: ').strip().lower().title()
+    city: str = input('Print city: ').strip().lower().title()
+    new_dict: Dict = dct.copy()
     new_dict['first_name'] = first_name
     new_dict['last_name'] = last_name
     new_dict['full_name'] = full_name
@@ -57,6 +57,9 @@ def search_first(n, dct):
             print('Found person:')
             print(i)
             break
+        else:
+            return
+
 
 def search_last(n, dct):
     for i in dct:
@@ -64,6 +67,8 @@ def search_last(n, dct):
             print('Found person:')
             print(i)
             break
+        else:
+            return
 
 
 def search_full(n, dct):
@@ -72,6 +77,8 @@ def search_full(n, dct):
             print('Found person:')
             print(i)
             break
+        else:
+            return
 
 
 def search_phone(n, dct):
@@ -80,6 +87,8 @@ def search_phone(n, dct):
             print('Found person:')
             print(i)
             break
+        else:
+            return
 
 
 def search_citi(n, dct):
@@ -88,6 +97,8 @@ def search_citi(n, dct):
             print('Found person:')
             print(i)
             break
+        else:
+            return
 
 
 def search_region(n, dct):
@@ -96,17 +107,20 @@ def search_region(n, dct):
             print('Found person:')
             print(i)
             break
+        else:
+            return
+
 
 def update_q(lst, n, dct):
     for item in dct:
         if item['phone'] == n:
             dct.remove(item)
-            first_name = input('Enter first name: ').strip().lower().title()
-            last_name = input('Enter last name: ').strip().lower().title()
-            full_name = first_name + ' ' + last_name
-            phone = input('Enter phone: ')
-            region = input('Enter region: ').strip().lower().title()
-            city = input('Print city: ').strip().lower().title()
+            first_name: [str] = input('Enter first name: ').strip().lower().title()
+            last_name: [str] = input('Enter last name: ').strip().lower().title()
+            full_name: [str] = first_name + ' ' + last_name
+            phone: Union[str, int] = input('Enter phone: ')
+            region: [str] = input('Enter region: ').strip().lower().title()
+            city: [str] = input('Print city: ').strip().lower().title()
             new_dict = lst.copy()
             new_dict['first_name'] = first_name
             new_dict['last_name'] = last_name
@@ -116,12 +130,17 @@ def update_q(lst, n, dct):
             new_dict['city'] = city
             dct.append(new_dict)
             break
+        else:
+            return
+
 
 def del_q(n, dct):
     for item in dct:
         if item['phone'] == n:
             dct.remove(item)
             break
+        else:
+            return
 
 
 try:
@@ -130,8 +149,8 @@ try:
         if command == 'add':
             add_f(phb, dict_pattern)
 
-        elif command == 'search first name':
-            query = input('First name: ').strip().lower().title()
+        elif command == '':
+            query: Union[str, int] = input('First name: ').strip().lower().title()
             search_first(query, phb)
 
         elif command == 'search last name':
