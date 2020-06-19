@@ -1,11 +1,30 @@
-def get_middle(s):
-    return s[(len(s) - 1) / 2:len(s) / 2 + 1]
-    # l = len(s) + 1
-    # sym1 = str(s[0:l // 2][-1])
-    # sym2 = str(s[l // 2:][0])
-    # if len(s) % 2 == 0:
-    #     return sym1 + sym2
-    # if len(s) % 2:
-    #     return sym1
+"""Ваша задача - создать функцию, которая может принимать любое неотрицательное целое число в
+качестве аргумента и возвращать его с его цифрами в порядке убывания. По сути,
+переставить цифры, чтобы создать максимально возможное число.
 
-print(get_middle("asdfdsa"))
+Примеры:
+Вход: 21445 Выход:54421
+
+Вход: 145263 Выход:654321
+
+Вход: 123456789 Выход:987654321
+
+"""
+
+def descending_order(num):
+    #num = 85629
+    num = str(num)
+    res = []
+    i = 0
+    while i < len(num)-1:
+        if num[i] <= num[i+1]:
+            res.append(num[i + 1])
+            i += 1
+        # else:
+        #     res.append(num[i])
+        #     i += 1
+
+
+    return res
+
+print(descending_order(85629))
