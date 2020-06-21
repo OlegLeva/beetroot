@@ -11,20 +11,17 @@
 
 """
 
+
 def descending_order(num):
-    #num = 85629
     num = str(num)
     res = []
-    i = 0
-    while i < len(num)-1:
-        if num[i] <= num[i+1]:
-            res.append(num[i + 1])
-            i += 1
-        # else:
-        #     res.append(num[i])
-        #     i += 1
+    for s in num:
+        res.append(s)
+    res.sort()
+    t = res[::-1]
+    number = int(''.join(j for j in t))
 
+    return number
 
-    return res
 
 print(descending_order(85629))
