@@ -1,5 +1,4 @@
 import unittest
-from lesson20.phonebook2 import add_f
 
 
 class testPhonebook2(unittest.TestCase):
