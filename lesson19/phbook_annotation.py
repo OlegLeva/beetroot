@@ -34,14 +34,14 @@ dict_pattern: Dict[str, str] = {
 }
 
 
-def add_f(lst: Any, dct: Any) -> List:
+def add_f(lst: str, dct: Dict [str, str]) -> List:
     first_name: str = input('Enter first name: ').strip().lower().title()
     last_name: str = input('Enter last name: ').strip().lower().title()
     full_name: str = first_name + ' ' + last_name
     phone: str = input('Enter phone: ')
     region: str = input('Enter region: ').strip().lower().title()
     city: str = input('Print city: ').strip().lower().title()
-    new_dict: Dict = dct.copy()
+    new_dict: Dict[str, str] = dct.copy()
     new_dict['first_name'] = first_name
     new_dict['last_name'] = last_name
     new_dict['full_name'] = full_name
@@ -51,7 +51,7 @@ def add_f(lst: Any, dct: Any) -> List:
     return lst.append(new_dict)
 
 
-def search_first(n, dct):
+def search_first(n: str, dct: Dict[str, str]):
     for i in dct:
         if i['first_name'] == n:
             print('Found person:')
@@ -61,7 +61,7 @@ def search_first(n, dct):
             return
 
 
-def search_last(n, dct):
+def search_last(n: str, dct: Dict[str, str]):
     for i in dct:
         if i['last_name'] == n:
             print('Found person:')
@@ -71,7 +71,7 @@ def search_last(n, dct):
             return
 
 
-def search_full(n, dct):
+def search_full(n: str, dct: Dict[str, str]):
     for i in dct:
         if i['full_name'] == n:
             print('Found person:')
@@ -81,7 +81,7 @@ def search_full(n, dct):
             return
 
 
-def search_phone(n, dct):
+def search_phone(n: str, dct: Dict[str, str]):
     for i in dct:
         if i['phone'] == n:
             print('Found person:')
@@ -91,7 +91,7 @@ def search_phone(n, dct):
             return
 
 
-def search_citi(n, dct):
+def search_citi(n: str, dct: Dict[str, str]):
     for i in dct:
         if i['city'] == n:
             print('Found person:')
@@ -101,7 +101,7 @@ def search_citi(n, dct):
             return
 
 
-def search_region(n, dct):
+def search_region(n: str, dct: Dict[str, str]):
     for i in dct:
         if i['region'] == n:
             print('Found person:')
@@ -134,7 +134,7 @@ def update_q(lst, n, dct):
             return
 
 
-def del_q(n, dct):
+def del_q(n: str, dct: Dict[str, str]):
     for item in dct:
         if item['phone'] == n:
             dct.remove(item)
