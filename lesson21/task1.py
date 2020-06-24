@@ -10,4 +10,16 @@ def to_power(x: Union[int, float], exp: int) -> Union[int, float]:
 
 
 print(to_power(2, 3))
-print(to_power(2, -5))
+#print(to_power(2, -5))
+
+def sum_of_digits(digit_string: str) -> int:
+    if digit_string > 9:
+        return digit_string % 10 + sum_of_digits(digit_string//10)
+    else:
+        return int(digit_string)
+
+print(sum_of_digits(123456789))
+
+
+
+
