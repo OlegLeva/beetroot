@@ -15,9 +15,9 @@ def main():
     myWin = turtle.Screen()
     t.left(90)
     t.up()
-    t.backward(100)
+    t.backward(150)
     t.down()
-    t.color("green")
+    t.color("red")
     tree(75,t)
     myWin.exitonclick()
 
