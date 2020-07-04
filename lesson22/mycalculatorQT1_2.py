@@ -1,8 +1,8 @@
 import sys
+from decimal import Decimal
 from functools import partial
 from PyQt5.QtWidgets import (QApplication,
                              QWidget,
-                             QHBoxLayout,
                              QVBoxLayout,
                              QGridLayout,
                              QLineEdit,
@@ -10,14 +10,15 @@ from PyQt5.QtWidgets import (QApplication,
                              QPushButton,
                              QLabel)
 
+
 class MyWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.setWindowTitle('Calculator 1.0')
-        self.setGeometry(300, 0, 500, 200)
+        self.setGeometry(300, 100, 500, 200)
         widget = QWidget()
         digitLabel = QLabel('∞-DIGIT')
-        self.editArea = QLineEdit('0')
+        self.editArea = QLineEdit('')
 
         mainLayout = QVBoxLayout()
         mainLayout.addWidget(digitLabel)
@@ -30,7 +31,7 @@ class MyWindow(QMainWindow):
                 'col': 0
             },
             {
-                'name': 'QR',
+                'name': 'sqrt',
                 'row': 0,
                 'col': 1
             },
@@ -60,7 +61,7 @@ class MyWindow(QMainWindow):
                 'col': 2
             },
             {
-                'name': 'X',
+                'name': '*',
                 'row': 1,
                 'col': 3
             },
@@ -111,7 +112,7 @@ class MyWindow(QMainWindow):
                 'colSpan': 2
             },
             {
-                'name': ',',
+                'name': '.',
                 'row': 4,
                 'col': 2
             },
@@ -137,26 +138,87 @@ class MyWindow(QMainWindow):
         widget.setLayout(mainLayout)
         self.setCentralWidget(widget)
 
-        for buttonName in self.buttons:
+        # digit buttons clicks
+        for buttonName in '0123456789':
             btn = self.buttons[buttonName]
-            btn.clicked.connect(partial(self.change_text, buttonName))
+            btn.clicked.connect(partial(self.on_digit_click, buttonName))
 
+        # equals button
+        self.buttons["="].clicked.connect(self.on_equals_click)
+        # comma
+        self.buttons["."].clicked.connect(self.on_comma_click)
+        # AC
+        self.buttons["AC"].clicked.connect(self.init_state)
 
-    def change_text(self, text):
-        self.editArea.setText(self.editArea.text() + text)
+        # +-*/ buttons
+        for buttonName in '+-*/':
+            btn = self.buttons[buttonName]
+            btn.clicked.connect(partial(self.on_operation_click, buttonName))
 
+        self.init_state()
 
+    def init_state(self):
+        # init internal state
+        self.display_string = "0"
+        self.current_operation = None
+        self.need_reset_display = False
+        self.result = 0
+        self.display()
 
-'''def main_widget():
-    app = QApplication(sys.argv)
-    mainWidget = QWidget()
-    mainWidget.setWindowTitle('Calculator1.0')
-    mainWidget.setGeometry(300, 0, 500, 300)
-    #digitLabel = QLabel('12-DIGIT', parent=mainWidget)
-    #buttom1 = QPushButton('Buttom', parent=mainWidget)
-    mainWidget.show()
-    return_code = app.exec()
-    sys.exit(return_code)'''
+    def reset_display(self):
+        self.display_string = "0"
+        self.need_reset_display = False
+
+    def display(self):
+        """ Displays internal display_string """
+        self.editArea.setText("")
+        self.editArea.setText(self.display_string)
+
+    def on_digit_click(self, digit):
+        if self.need_reset_display:
+            self.reset_display()
+
+        if self.display_string == "0":
+            self.display_string = digit
+        else:
+            self.display_string += digit
+        self.display()
+
+    def on_comma_click(self):
+        if "." not in self.display_string:
+            self.display_string += "."
+
+    @property
+    def display_value(self):
+        if "." in self.display_string:
+            res = Decimal(self.display_string)
+        else:
+            res = int(self.display_string)
+        return res
+
+    def on_equals_click(self):
+        if self.current_operation:
+            if self.current_operation == "+":
+                self.result += self.display_value
+            elif self.current_operation == "-":
+                self.result -= self.display_value
+            elif self.current_operation == "*":
+                self.result *= self.display_value
+            elif self.current_operation == "/":
+                self.result /= self.display_value
+
+            self.current_operation = None
+            self.display_string = str(self.result)
+            self.display()
+
+    def on_operation_click(self, operation):
+        if self.current_operation and not self.need_reset_display:
+            self.on_equals_click()
+
+        self.result = self.display_value
+        self.need_reset_display = True
+        self.current_operation = operation
+
 
 def main_window():
     app = QApplication(sys.argv)
