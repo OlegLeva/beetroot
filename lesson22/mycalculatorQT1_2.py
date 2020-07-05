@@ -1,5 +1,6 @@
 import sys
 from decimal import Decimal
+from math import sqrt
 from functools import partial
 from PyQt5.QtWidgets import (QApplication,
                              QWidget,
@@ -31,7 +32,7 @@ class MyWindow(QMainWindow):
                 'col': 0
             },
             {
-                'name': 'sqrt',
+                'name': '√',
                 'row': 0,
                 'col': 1
             },
@@ -149,9 +150,11 @@ class MyWindow(QMainWindow):
         self.buttons["."].clicked.connect(self.on_comma_click)
         # AC
         self.buttons["AC"].clicked.connect(self.init_state)
+        # √
+        self.buttons["%"].clicked.connect(self.on_percent_click)
 
         # +-*/ buttons
-        for buttonName in '+-*/':
+        for buttonName in '+-*/√':
             btn = self.buttons[buttonName]
             btn.clicked.connect(partial(self.on_operation_click, buttonName))
 
@@ -205,11 +208,32 @@ class MyWindow(QMainWindow):
             elif self.current_operation == "*":
                 self.result *= self.display_value
             elif self.current_operation == "/":
-                self.result /= self.display_value
+                if self.display_value == "0":
+                    raise ZeroDivisionError
+                else:
+                    self.result /= self.display_value
+            elif self.current_operation == "√":
+                self.result = sqrt(self.display_value)
 
             self.current_operation = None
             self.display_string = str(self.result)
             self.display()
+
+    def on_percent_click(self):
+        if self.current_operation:
+            if self.current_operation == "+":
+                self.result = self.result + ((self.result/100)*self.display_value)
+            elif self.current_operation == "-":
+                self.result = self.result - ((self.result / 100) * self.display_value)
+            elif self.current_operation == "*":
+                self.result = (self.result / 100) * self.display_value
+            elif self.current_operation == "/":
+                self.result = self.result * (100 / self.display_value)
+
+            self.current_operation = None
+            self.display_string = str(self.result)
+            self.display()
+
 
     def on_operation_click(self, operation):
         if self.current_operation and not self.need_reset_display:
