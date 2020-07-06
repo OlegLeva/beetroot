@@ -1,3 +1,5 @@
+#За основу взял калькулятор iPhone
+
 import sys
 from decimal import Decimal
 from math import sqrt
