@@ -9,13 +9,14 @@ from PyQt5.QtWidgets import (QApplication,
                              QLineEdit,
                              QMainWindow,
                              QPushButton,
-                             QLabel)
+                             QLabel,
+                             QSizePolicy)
 
 
 class MyWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.setWindowTitle('Calculator 1.0')
+        self.setWindowTitle('Calculator 1.2')
         self.setGeometry(300, 100, 500, 200)
         widget = QWidget()
         digitLabel = QLabel('∞-DIGIT')
@@ -128,6 +129,7 @@ class MyWindow(QMainWindow):
         for buttonConfig in buttons:
             name = buttonConfig.get('name', '')
             btn = QPushButton(name)
+            btn.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
             self.buttons[name] = btn
             buttonLayout.addWidget(btn,
                                    buttonConfig.get('row'),
