@@ -202,39 +202,42 @@ class MyWindow(QMainWindow):
         return res
 
     def on_equals_click(self):
-        if self.current_operation:
-            if self.current_operation == "+":
-                self.result += self.display_value
-            elif self.current_operation == "-":
-                self.result -= self.display_value
-            elif self.current_operation == "*":
-                self.result *= self.display_value
-            elif self.current_operation == "/":
-                if self.display_value == "0":
-                    raise ZeroDivisionError
-                else:
+        try:
+            if self.current_operation:
+                if self.current_operation == "+":
+                    self.result += self.display_value
+                elif self.current_operation == "-":
+                    self.result -= self.display_value
+                elif self.current_operation == "*":
+                    self.result *= self.display_value
+                elif self.current_operation == "/":
                     self.result /= self.display_value
-            elif self.current_operation == "√":
-                self.result = sqrt(self.display_value)
+                elif self.current_operation == "√":
+                    self.result = sqrt(self.display_value)
 
-            self.current_operation = None
-            self.display_string = str(self.result)
-            self.display()
+                self.current_operation = None
+                self.display_string = str(self.result)
+                self.display()
+        except ZeroDivisionError:
+            print("You cannot divide by zero!")
 
     def on_percent_click(self):
-        if self.current_operation:
-            if self.current_operation == "+":
-                self.result = self.result + ((self.result/100)*self.display_value)
-            elif self.current_operation == "-":
-                self.result = self.result - ((self.result / 100) * self.display_value)
-            elif self.current_operation == "*":
-                self.result = (self.result / 100) * self.display_value
-            elif self.current_operation == "/":
-                self.result = self.result * (100 / self.display_value)
+        try:
+            if self.current_operation:
+                if self.current_operation == "+":
+                    self.result = self.result + ((self.result/100)*self.display_value)
+                elif self.current_operation == "-":
+                    self.result = self.result - ((self.result / 100) * self.display_value)
+                elif self.current_operation == "*":
+                    self.result = (self.result / 100) * self.display_value
+                elif self.current_operation == "/":
+                    self.result = self.result * (100 / self.display_value)
 
-            self.current_operation = None
-            self.display_string = str(self.result)
-            self.display()
+                self.current_operation = None
+                self.display_string = str(self.result)
+                self.display()
+        except ZeroDivisionError:
+            print("You cannot divide by zero!")
 
 
     def on_operation_click(self, operation):
