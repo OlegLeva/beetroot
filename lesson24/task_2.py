@@ -17,6 +17,7 @@ def check_balanced(items):
         return False
 
 print(check_balanced("((()))"))
+print(check_balanced("(()))"))
 print(check_balanced("((())"))
 
 
