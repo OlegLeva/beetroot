@@ -19,7 +19,7 @@ class MyWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.setWindowTitle('Calculator 1.2')
-        self.setGeometry(300, 100, 500, 200)
+        self.setGeometry(300, 100, 500, 400)
         widget = QWidget()
         digitLabel = QLabel('∞-DIGIT')
         self.editArea = QLineEdit('')

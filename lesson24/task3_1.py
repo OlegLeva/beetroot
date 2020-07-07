@@ -1,5 +1,5 @@
 from collections import deque
-class Stack:
+class Queue:
     def __init__(self):
         self.items = deque()
         self.item = None
@@ -8,7 +8,7 @@ class Stack:
         self.items = [i for i in item]
 
     def pop(self):
-        return self.items.pop()
+        return self.items.pop(0)
 
     def get_from_stack(self, item):
         for i in range(len(self.items)):
@@ -16,15 +16,15 @@ class Stack:
             if s == item:
                 self.item = s
             else:
-                self.items.insert(0, s)
+                self.items.append(s)
         if self.item == None:
             raise ValueError("No item listed")
         return self.item
 
 lst = [1, 3, 5, 8, 44, 99]
-nnn = Stack()
+nnn = Queue()
 nnn.push(lst)
-print(nnn.get_from_stack(5))
+print(nnn.get_from_stack(44))
 
 
 
