@@ -5,7 +5,7 @@ print("_" * 50)
 for j in path:
     print(j)
 
-path.append("/Users/mymac/PycharmProjects/beetroot/lesson17/task1_1.py")
+path.append("/Users/mymac/PycharmProjects/beetroot/lesson17/stack_list.py")
 # C path можно работать как с обычным списком.
 # Влияет на поиск, так как можно добавить path других модулей.
 print("_" * 50)

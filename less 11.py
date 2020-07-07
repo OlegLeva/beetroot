@@ -233,3 +233,5 @@ class StrangePerson:
     def __init__(self, clothes):
         self.clothes = clothes
         self.brain = Brain()
+
+print(9**0)
