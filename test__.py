@@ -3,14 +3,9 @@ class Node:
         self.dataval = dataval
         self.nextval = None
 
-
-
 class SLinkedList:
     def __init__(self):
         self.headval = None
-        self.e2 = None
-
-
 
 list1 = SLinkedList()
 list1.headval = Node("Mon")
@@ -21,4 +16,4 @@ list1.headval.nextval = e2
 
 # Link second Node to third node
 e2.nextval = e3
-print([i for i in range(20, 2, -2)])
+print((list1))
