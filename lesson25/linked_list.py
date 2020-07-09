@@ -38,7 +38,7 @@ elem2.next = elem3
 
 
 print(my_list)
-print(elem.next.next)
+print(my_list.head.next.next)
 print(elem.next.next)
 
 print(Node.has_value(elem2.next, "Marta"))
