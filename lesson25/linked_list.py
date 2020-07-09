@@ -3,8 +3,6 @@ class Node:
         self.data = data
         self.next = 0
 
-    def __repr__(self):
-        return f"{self.data}"
 
     def has_value(self, value):
         if self.data == value:
@@ -12,6 +10,8 @@ class Node:
         else:
             return False
 
+    def __repr__(self):
+        return f"{self.data}"
 
 
 class LinkedList:
