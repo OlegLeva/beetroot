@@ -1,7 +1,7 @@
 class Node:
     def __init__(self, data=None):
         self.data = data
-        self.next = 0
+        self.next = None
 
 
     def has_value(self, value):
