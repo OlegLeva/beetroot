@@ -221,7 +221,7 @@ class MyWindow(QMainWindow):
                 self.display_string = str(self.result)
                 self.display()
         except ZeroDivisionError:
-            print("You cannot divide by zero!")
+            return self.editArea.setText('Ошибка')
 
     def on_percent_click(self):
         try:
@@ -239,7 +239,8 @@ class MyWindow(QMainWindow):
                 self.display_string = str(self.result)
                 self.display()
         except ZeroDivisionError:
-            print("You cannot divide by zero!")
+            return self.editArea.setText('Ошибка')
+
 
 
     def on_operation_click(self, operation):
