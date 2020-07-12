@@ -1,10 +1,7 @@
 import socket
-
 HOST = '127.0.0.1'
-PORT = 65432
-with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
-    s.connect((HOST, PORT))
-    s.sendall(b'Privet Olya')
-    data = s.recv(1024)
+PORT = 6789
+msg = "Hello"
+sock_client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock_client.sendto(bytes(msg, encoding='utf-8'), (HOST, PORT))
 
-print('Received', repr(data))
