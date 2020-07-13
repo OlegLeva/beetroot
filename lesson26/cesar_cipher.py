@@ -3,7 +3,7 @@ def cesar(string):
     alpha = ' abcdefghijklmnopqrstuvwxyz'
     res = []
     print(string)
-    for c in string:
+    for c in string.decode('utf-8'):
         print(c)
         if c == alpha[-1]:
             c = alpha[0]
@@ -12,4 +12,4 @@ def cesar(string):
     key = ''.join(res)
     return key
 
-print(cesar('abcd'))
+# print(cesar('abcd'))

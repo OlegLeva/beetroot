@@ -16,5 +16,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             if not data:
                 break
             data = cesar(data)
-            conn.sendall(data)
+            conn.sendall(bytes(data, encoding='utf-8'))
 
