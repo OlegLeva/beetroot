@@ -1,19 +1,21 @@
 import requests
 
-def weather_data(query):
-    res = requests.get(f'https://openweathermap.org/find?utf8=%E2%9C%93&q={query}')
-    return res.text
+def weather_data(query, api_ad):
+    res = requests.get(f'https://api.openweathermap.org/data/2.5/weather',
+                       params={'q': {query}, 'appid': {api_ad}, 'units': 'metric'})
+    return res.json()
 
 
 def print_weather(result, city):
-    print(f"{}")
+    print(f"{city}, {result['main']['temp']}")
 
 
 def main():
     city = input("Введите пожалуйста город: ")
     query = city
-    weath = weather_data(query)
-    print_weather(weath, city)
+    api_ad = '82d874077256d593ec739f2feaeddbc2'
+    weather = weather_data(query, api_ad)
+    print_weather(weather, city)
 
 
 if __name__ == '__main__':
