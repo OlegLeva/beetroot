@@ -16,6 +16,14 @@ def add_f(lst, dct):
     return lst.append(new_dict)
 
 
+def search_id(n, dct):
+    for i in dct:
+        if i['id'] == n:
+            print('Found person:')
+            print(i)
+            break
+
+
 def search_first(n, dct):
     for i in dct:
         if i['first_name'] == n:

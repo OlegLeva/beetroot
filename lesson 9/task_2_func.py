@@ -1,4 +1,5 @@
 def add_f(lst, dct):
+    id = input('Enter id: ')
     first_name = input('Enter first name: ').strip().lower().title()
     last_name = input('Enter last name: ').strip().lower().title()
     full_name = first_name + ' ' + last_name
@@ -6,6 +7,7 @@ def add_f(lst, dct):
     region = input('Enter region: ').strip().lower().title()
     city = input('Print city: ').strip().lower().title()
     new_dict = dct.copy()
+    new_dict['id'] = id
     new_dict['first_name'] = first_name
     new_dict['last_name'] = last_name
     new_dict['full_name'] = full_name
@@ -13,6 +15,14 @@ def add_f(lst, dct):
     new_dict['region'] = region
     new_dict['city'] = city
     return lst.append(new_dict)
+
+
+def search_id(n, dct):
+    for i in dct:
+        if i['id'] == n:
+            print('Found person:')
+            print(i)
+            break
 
 
 def search_first(n, dct):
@@ -67,6 +77,7 @@ def update_q(lst, n, dct):
     for item in dct:
         if item['phone'] == n:
             dct.remove(item)
+            id = input('Enter id: ')
             first_name = input('Enter first name: ').strip().lower().title()
             last_name = input('Enter last name: ').strip().lower().title()
             full_name = first_name + ' ' + last_name
@@ -74,6 +85,7 @@ def update_q(lst, n, dct):
             region = input('Enter region: ').strip().lower().title()
             city = input('Print city: ').strip().lower().title()
             new_dict = lst.copy()
+            new_dict['id'] = id
             new_dict['first_name'] = first_name
             new_dict['last_name'] = last_name
             new_dict['full_name'] = full_name
@@ -89,3 +101,5 @@ def del_q(n, dct):
         if item['phone'] == n:
             dct.remove(item)
             break
+
+

@@ -15,7 +15,7 @@
 
 import sys
 import json
-from task_2_func import add_f, search_first, search_last, search_full,\
+from task_2_func import add_f, search_id, search_first, search_last, search_full ,\
     search_phone, search_region, search_citi, update_q, del_q
 
 filename = sys.argv[1]
@@ -28,6 +28,7 @@ except json.decoder.JSONDecodeError:
 f.close()
 
 dict_pattern = {
+    'id': '',
     'first_name': '',
     'last_name': '',
     'full_name': '',
@@ -41,6 +42,10 @@ try:
         command = input('Select command: ').strip().lower()
         if command == 'add':
             add_f(phb, dict_pattern)
+
+        elif command == 'search id':
+            query = input('id: ')
+            search_id(query, phb)
 
         elif command == 'search first name':
             query = input('First name: ').strip().lower().title()
