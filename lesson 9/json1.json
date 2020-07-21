@@ -1,18 +1,18 @@
 [
     {
         "id": "1",
-        "first_name": "Oleg",
-        "last_name": "Levitskyi",
-        "full_name": "Oleg Levitskyi",
+        "first_name": "Oleh",
+        "last_name": "Levytskyi",
+        "full_name": "Oleh Levytskyi",
         "phone": "+380509001818",
         "region": "Poltava",
         "city": "Kremenchuk"
     },
     {
         "id": "2",
-        "first_name": "Olga",
-        "last_name": "Levitskaya",
-        "full_name": "Olga Levitskaya",
+        "first_name": "Olha",
+        "last_name": "Levytska",
+        "full_name": "Olha Levytska",
         "phone": "+380507093655",
         "region": "Poltava",
         "city": "Kremenchuk"
@@ -20,7 +20,7 @@
     {
         "id": "3",
         "first_name": "Nikita",
-        "last_name": "Levitskyi",
+        "last_name": "Levytskyi",
         "full_name": "Nikita Levitskyi",
         "phone": "+380507093682",
         "region": "Poltava",
@@ -29,7 +29,7 @@
     {
         "id": "4",
         "first_name": "Ivan",
-        "last_name": "Levitskyi",
+        "last_name": "Levytskyi",
         "full_name": "Ivan Levitskyi",
         "phone": "+380500000000",
         "region": "Poltava",
