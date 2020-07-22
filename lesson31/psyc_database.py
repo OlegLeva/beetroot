@@ -29,11 +29,10 @@ class MyWindow(QMainWindow):
         mainLayout.addWidget(self.answer)
         buttonLayout = QGridLayout()
 
+
         mainLayout.addLayout(buttonLayout)
         widget.setLayout(mainLayout)
         self.setCentralWidget(widget)
-
-
 
 
 def main_window():
