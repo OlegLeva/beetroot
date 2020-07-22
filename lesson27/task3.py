@@ -1,7 +1,7 @@
 import requests
 
 def weather_data(query, api_id):
-    res = requests.get(f'https://api.openweathermap.org/data/2.5/weather',
+    res = requests.get('https://api.openweathermap.org/data/2.5/weather',
                        params={'q': {query}, 'appid': {api_id}, 'units': 'metric'})
     return res.json()
 
