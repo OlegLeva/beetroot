@@ -1,4 +1,3 @@
-
 def add_f(lst, dct):
     first_name = input('Enter first name: ').strip().lower().title()
     last_name = input('Enter last name: ').strip().lower().title()
@@ -30,6 +29,7 @@ def search_first(n, dct):
             print('Found person:')
             print(i)
             break
+
 
 def search_last(n, dct):
     for i in dct:
@@ -70,6 +70,7 @@ def search_region(n, dct):
             print(i)
             break
 
+
 def update_q(lst, n, dct):
     for item in dct:
         if item['phone'] == n:
@@ -89,6 +90,7 @@ def update_q(lst, n, dct):
             new_dict['city'] = city
             dct.append(new_dict)
             break
+
 
 def del_q(n, dct):
     for item in dct:
