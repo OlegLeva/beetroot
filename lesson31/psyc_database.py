@@ -168,7 +168,6 @@ class MyWindow(QMainWindow):
         self.answer.setText(s)
 
 
-
     def meditation(self):
         self.answer.setText('OOOOOmmmmmmmmmmmmmmm...')
 
