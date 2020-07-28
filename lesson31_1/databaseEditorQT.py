@@ -6,9 +6,11 @@ from PyQt5.QtWidgets import (QApplication,
                              QLabel,
                              QLineEdit,
                              QVBoxLayout,
+                             QHBoxLayout,
                              QGridLayout,
                              QPushButton,
-                             QSizePolicy)
+                             QSizePolicy,
+                             QTextEdit)
 
 import sys
 
@@ -16,18 +18,22 @@ import sys
 class MyWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.setWindowTitle("DATABASE EDITOR ULTRA SUPER OFIGENNIY 2020")
-        self.setGeometry(300, 100, 800, 700)
+        self.setWindowTitle("DATABASE EDITOR")
+        self.setGeometry(300, 100, 800, 500)
         widget = QWidget()
         self.digitLabel = QLabel('REQUEST')
         self.request = QLineEdit('')
-        digitLabel_2 = QLabel('ANSWER')
-        self.answer = QLineEdit('')
+        self.digitLabel_2 = QLabel('ANSWER')
+        self.answer = QTextEdit('')
 
+        mostmaimlayout = QHBoxLayout()
         mainLayout = QVBoxLayout()
+        mainLayout1 = QVBoxLayout()
+        mostmaimlayout.addLayout(mainLayout)
+        mostmaimlayout.addLayout(mainLayout1)
         mainLayout.addWidget(self.digitLabel)
         mainLayout.addWidget(self.request)
-        mainLayout.addWidget(digitLabel_2)
+        mainLayout.addWidget(self.digitLabel_2)
         mainLayout.addWidget(self.answer)
         buttonLayout = QGridLayout()
         buttons = [
@@ -74,82 +80,82 @@ class MyWindow(QMainWindow):
                                    buttonConfig.get('col'))
 
         mainLayout.addLayout(buttonLayout)
-        widget.setLayout(mainLayout)
+        widget.setLayout(mostmaimlayout)
         self.setCentralWidget(widget)
 
         #Не получаеться вынести часть LineEdit и следущие Кнопки на другой Лайаут(((
         self.digitLabel1 = QLabel('Enter country id')
-        mainLayout.addWidget(self.digitLabel1)
+        mainLayout1.addWidget(self.digitLabel1)
         self.countryEdit1 = QLineEdit('')
-        mainLayout.addWidget(self.countryEdit1)
+        mainLayout1.addWidget(self.countryEdit1)
 
         self.digitLabel2 = QLabel('Enter country name')
-        mainLayout.addWidget(self.digitLabel2)
+        mainLayout1.addWidget(self.digitLabel2)
         self.countryEdit2 = QLineEdit('')
-        mainLayout.addWidget(self.countryEdit2)
+        mainLayout1.addWidget(self.countryEdit2)
 
         self.digitLabel3 = QLabel('Enter country abbr')
-        mainLayout.addWidget(self.digitLabel3)
+        mainLayout1.addWidget(self.digitLabel3)
         self.countryEdit3 = QLineEdit('')
-        mainLayout.addWidget(self.countryEdit3)
+        mainLayout1.addWidget(self.countryEdit3)
 
         self.digitLabel4 = QLabel('Enter phone code')
-        mainLayout.addWidget(self.digitLabel4)
+        mainLayout1.addWidget(self.digitLabel4)
         self.countryEdit4 = QLineEdit('')
-        mainLayout.addWidget(self.countryEdit4)
+        mainLayout1.addWidget(self.countryEdit4)
 
         buttonLayout1 = QGridLayout()
         self.btn1 = QPushButton("Add country", self)
         self.btn1.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
         buttonLayout1.addWidget(self.btn1)
-        mainLayout.addLayout(buttonLayout1)
+        mainLayout1.addLayout(buttonLayout1)
 
         self.digitLabel11 = QLabel('Enter city id')
-        mainLayout.addWidget(self.digitLabel11)
+        mainLayout1.addWidget(self.digitLabel11)
         self.countryEdit11 = QLineEdit('')
-        mainLayout.addWidget(self.countryEdit11)
+        mainLayout1.addWidget(self.countryEdit11)
 
         self.digitLabel22 = QLabel('Enter city name')
-        mainLayout.addWidget(self.digitLabel22)
+        mainLayout1.addWidget(self.digitLabel22)
         self.countryEdit22 = QLineEdit('')
-        mainLayout.addWidget(self.countryEdit22)
+        mainLayout1.addWidget(self.countryEdit22)
 
         self.digitLabel33 = QLabel('Enter country id')
-        mainLayout.addWidget(self.digitLabel33)
+        mainLayout1.addWidget(self.digitLabel33)
         self.countryEdit33 = QLineEdit('')
-        mainLayout.addWidget(self.countryEdit33)
+        mainLayout1.addWidget(self.countryEdit33)
 
         buttonLayout2 = QGridLayout()
         self.btn2 = QPushButton("Add city", self)
         self.btn2.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
         buttonLayout2.addWidget(self.btn2)
-        mainLayout.addLayout(buttonLayout2)
+        mainLayout1.addLayout(buttonLayout2)
 
         self.digitLabel111 = QLabel('Enter person id')
-        mainLayout.addWidget(self.digitLabel111)
+        mainLayout1.addWidget(self.digitLabel111)
         self.countryEdit111 = QLineEdit('')
-        mainLayout.addWidget(self.countryEdit111)
+        mainLayout1.addWidget(self.countryEdit111)
 
         self.digitLabel222 = QLabel('Enter name')
-        mainLayout.addWidget(self.digitLabel222)
+        mainLayout1.addWidget(self.digitLabel222)
         self.countryEdit222 = QLineEdit('')
-        mainLayout.addWidget(self.countryEdit222)
+        mainLayout1.addWidget(self.countryEdit222)
 
         self.digitLabel333 = QLabel('Enter city id')
-        mainLayout.addWidget(self.digitLabel333)
+        mainLayout1.addWidget(self.digitLabel333)
         self.countryEdit333 = QLineEdit('')
-        mainLayout.addWidget(self.countryEdit333)
+        mainLayout1.addWidget(self.countryEdit333)
 
         self.digitLabel444 = QLabel('Enter phone nomber')
-        mainLayout.addWidget(self.digitLabel444)
+        mainLayout1.addWidget(self.digitLabel444)
         self.countryEdit444 = QLineEdit('')
-        mainLayout.addWidget(self.countryEdit444)
+        mainLayout1.addWidget(self.countryEdit444)
 
         buttonLayout3 = QGridLayout()
         self.btn3 = QPushButton("Add person", self)
         self.btn3.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
         buttonLayout3.addWidget(self.btn3)
-        mainLayout.addLayout(buttonLayout3)
+        mainLayout1.addLayout(buttonLayout3)
 
         self.buttons["get data by name"].clicked.connect(partial(self.get_phone_by_name))
         self.buttons["Meditation"].clicked.connect(partial(self.meditation))
