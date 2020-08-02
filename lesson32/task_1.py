@@ -2,7 +2,7 @@ import asyncio
 
 
 async def fib():
-    await asyncio.sleep(0.001)
+    await asyncio.sleep(1)
     lst_fib = []
     a, b = 0, 1
     for i in range(10):
@@ -13,8 +13,7 @@ async def fib():
 
 async def factorial():
     await asyncio.sleep(1)
-    fac = 1
-    i = 0
+    fac, i = 1, 0
     lst_fac = []
     for m in range(10):
         while i < m:
@@ -25,7 +24,7 @@ async def factorial():
 
 
 async def sqrt():
-    await asyncio.sleep(0.001)
+    await asyncio.sleep(1)
     lst_sqrt = []
     for i in range(10):
         s = i ** 2
@@ -34,7 +33,7 @@ async def sqrt():
 
 
 async def cubic():
-    await asyncio.sleep(0.001)
+    await asyncio.sleep(1)
     lst_cub = []
     for i in range(10):
         s = i ** 3
