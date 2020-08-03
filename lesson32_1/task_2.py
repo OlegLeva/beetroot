@@ -13,7 +13,7 @@ async def second_post():
     res = await resp.json()
     comment_lst = []
     for comment in res['data']:
-        comment_lst.append(comment['body'].decode('utf-8'))
+        comment_lst.append(comment['body'].encode())
     key_lst = list(range(1, 26))
     my_dict = dict(zip(key_lst, comment_lst))
     return com_lst.append(my_dict)
@@ -27,7 +27,7 @@ async def first_post():
     res = await resp.json()
     comment_lst = []
     for comment in res['data']:
-        comment_lst.append(comment['body'].decode('utf-8'))
+        comment_lst.append(comment['body'].encode())
     key_lst = list(range(1, 26))
     my_dict = dict(zip(key_lst, comment_lst))
     return com_lst.append(my_dict)
@@ -41,7 +41,7 @@ async def third_post():
     res = await resp.json()
     comment_lst = []
     for comment in res['data']:
-        comment_lst.append(comment['body'].decode('utf-8'))
+        comment_lst.append(comment['body'].encode())
     key_lst = list(range(1, 26))
     my_dict = dict(zip(key_lst, comment_lst))
     return com_lst.append(my_dict)
