@@ -1,41 +1,29 @@
 import asyncio
+import json
 
 
-class EchoClientProtocol(asyncio.Protocol):
-    def __init__(self, message, on_con_lost):
-        self.message = message
-        self.on_con_lost = on_con_lost
+class Client(asyncio.Protocol):
+    def __init__(self, loop, user):
+        self.user = user
+        self.is_open = False
+        self.loop = loop
+        self.last_message = ""
 
     def connection_made(self, transport):
-        transport.write(self.message.encode())
-        print('Data sent: {!r}'.format(self.message))
-
-    def data_received(self, data):
-        print('Data received: {!r}'.format(data.decode()))
+        self.transport = transport
+        self.is_open = True
 
     def connection_lost(self, exc):
-        print('The server closed the connection')
-        self.on_con_lost.set_result(True)
+        self.is_open = False
+        self.loop.stop()
 
+    def data_received(self, data):
+        if data:
+            message = json.loads(data.decode())
+            self.process_message(message)
 
-async def main():
-    # Get a reference to the event loop as we plan to use
-    # low-level APIs.
-    loop = asyncio.get_running_loop()
+    def process_message(self, message):
+        self.output(message)
 
-    on_con_lost = loop.create_future()
-    message = input("Enter message: ")
-
-    transport, protocol = await loop.create_connection(
-        lambda: EchoClientProtocol(message, on_con_lost),
-        '127.0.0.1', 8888)
-
-    # Wait until the protocol signals that the connection
-    # is lost and close the transport.
-    try:
-        await on_con_lost
-    finally:
-        transport.close()
-
-
-asyncio.run(main())
+    def send(self, data):
+        self.transport.write(data.decode())
