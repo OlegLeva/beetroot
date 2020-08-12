@@ -73,9 +73,9 @@ class App(QApplication):
         self.userClient = EchoClientProtocol(self.loop, 'user')
 
         self.loop.create_task(self.start())
+        self.gui = Gui(self.loop, self.userClient)
 
         self.loop.run_forever()
-        self.gui = Gui(self.loop, self.userClient)
 
     async def start(self):
         clientConnection = self.loop.create_connection(lambda: self.userClient, '127.0.0.1', 8888)
