@@ -20,6 +20,7 @@ class EchoServerProtocol(asyncio.Protocol):
         if self.messages:
             messages.append({'message': '_'*10 + f'Last {len(self.messages[-5:])} messages' + '_'*10})
         self.transport.write(json.dumps(messages).encode())
+        print(f'TRANSPORT {self.transports} \n {self.transport}')
         self.transports.append(self.transport)
 
     def data_received(self, data):
