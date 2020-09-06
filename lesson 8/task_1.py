@@ -1,4 +1,3 @@
-
 def oops():
     raise IndexError
 
@@ -7,8 +6,11 @@ def catch():
     try:
         oops()
     except IndexError:
-        return ('IndexError caught')
+        return 'IndexError caught'
+
+
 print(catch())
+
 
 ###############################
 
@@ -17,8 +19,10 @@ def oops1():
     t = (5, 4, 4, 7, 8)
     return t[8]
 
+
 def catch1(z):
     return z
+
 
 try:
     catch1(oops1())
