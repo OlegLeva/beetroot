@@ -5,8 +5,6 @@ from config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
-
-
 app.config['SECRET_KEY'] = 'password'
 
 
@@ -17,8 +15,8 @@ def index():
     car_list = [
         {
             'car_id': 1,
-            'car_numb': 'BI4078',
-            'trailer_numb': 'XXXXXX',
+            'car_numb': 'BI4078CE',
+            'trailer_numb': 'BI2324XK',
             'driver': 'Tereshchenko Dmitro'
         }
     ]
