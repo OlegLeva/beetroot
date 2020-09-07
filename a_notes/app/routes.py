@@ -1,8 +1,13 @@
 from flask import Flask, render_template,flash, redirect, url_for
 from a_notes.app.forms import LoginForm
 from config import Config
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 app = Flask(__name__)
+app.config.from_object(Config)
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 app.config.from_object(Config)
 app.config['SECRET_KEY'] = 'password'
 
