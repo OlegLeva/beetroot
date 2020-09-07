@@ -1,4 +1,4 @@
-from flask import Flask, render_template,flash, redirect, url_for
+from flask import Flask, render_template, flash, redirect, url_for
 from a_notes.app.forms import LoginForm
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
