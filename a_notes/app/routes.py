@@ -18,7 +18,7 @@ def index():
     user = {'username': 'Oleg'}
     car_list = [
         {
-            'car_id': 1,
+            'id': 1,
             'car_numb': 'BI4078CE',
             'trailer_numb': 'BI2324XK',
             'driver': 'Tereshchenko Dmitro'
