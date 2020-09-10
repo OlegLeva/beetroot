@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1><font size="8" color="#FF4500" face="geneva">
+    <h1><font size="6" color="#FF4500" face="geneva">
         Hi, {{ user.username }}!
     </font></h1>
         {% for car in car_list %}
     <div><p align="center"><b>
-        <font size="10" color="#fa8e47" face="serif">
+        <font size="6" color="#fa8e47" face="serif">
         {{ car.id }}.   {{ car.car_numb }} /
-        {{car.trailer_numb}}   {{car.driver}}
+        {{car.trailer_numb}}   {{car.driver}} tel. {{car.phone}}
         </font>
     </b></p></div>
     {% endfor %}

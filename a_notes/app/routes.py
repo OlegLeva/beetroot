@@ -21,7 +21,8 @@ def index():
             'id': 1,
             'car_numb': 'BI4078CE',
             'trailer_numb': 'BI2324XK',
-            'driver': 'Tereshchenko Dmitro'
+            'driver': 'Tereshchenko Dmitro',
+            'phone': '+380980353438'
         }
     ]
     return render_template('index.html', title='Home', user=user, car_list=car_list)
