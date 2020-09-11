@@ -15,19 +15,15 @@ app.config['SECRET_KEY'] = 'password'
 @app.route('/')
 @app.route('/index')
 def index():
-    user = {'username': 'Oleg'}
-    car_list = [
-        {
-            'id': 1,
-            'car_numb': 'BI4078CE',
-            'trailer_numb': 'BI2324XK',
-            'driver': 'Tereshchenko Dmitro',
-            'phone': '+380980353438'
-        }
-    ]
-    form = LoginForm()
-    return render_template('index.html', title='Home', user=user, car_list=car_list, form=form)
+    # here will be a list of all auto trains  
+    return render_template(.....)
 
+@app.route('/add-document', methods=[POST])
+def add_doc():
+    # add document and link it to truck/driver/trailer
+    return render_template(.....)
+
+# Todo: list all pages
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
