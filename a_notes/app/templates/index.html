@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+
     <h1><font size="6" color="#FF4500" face="geneva">
         Hi, {{ user.username }}!
     </font></h1>
@@ -11,5 +12,18 @@
         {{car.trailer_numb}}   {{car.driver}} tel. {{car.phone}}
         </font>
     </b></p></div>
+
+    <form action="" method="post"  novalidate>
+
+        {{ form.hidden_tag() }}
+        <p><font size="6" color="#000080">
+            {{ form.username1.label }}<br>
+            {{ form.username1(size=64) }}<br>
+            {% for error in form.username1.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </font></p>
+    </form>
+
     {% endfor %}
 {% endblock %}

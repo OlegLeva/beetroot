@@ -25,7 +25,8 @@ def index():
             'phone': '+380980353438'
         }
     ]
-    return render_template('index.html', title='Home', user=user, car_list=car_list)
+    form = LoginForm()
+    return render_template('index.html', title='Home', user=user, car_list=car_list, form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
