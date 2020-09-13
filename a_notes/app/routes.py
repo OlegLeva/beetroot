@@ -1,5 +1,6 @@
 from flask import Flask, render_template, flash, redirect, url_for
-from a_notes.app.forms import LoginForm
+from a_notes.app.forms import LoginForm, AddDoc
+from a_notes.create_DB_SQL import add_car_list, get_all_auto_trains
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -15,15 +16,23 @@ app.config['SECRET_KEY'] = 'password'
 @app.route('/')
 @app.route('/index')
 def index():
-    # here will be a list of all auto trains  
-    return render_template(.....)
+    user = {'username': 'Oleh'}
+    auto_train_home = get_all_auto_trains()
+    # here will be a list of all auto trains
+    return render_template('index.html', auto_train_home=auto_train_home, user=user)
 
-@app.route('/add-document', methods=[POST])
-def add_doc():
+
+@app.route('/add_document', methods=['GET', 'POST'])
+def add_document():
     # add document and link it to truck/driver/trailer
-    return render_template(.....)
+    form = AddDoc()
+    if form.validate_on_submit():
+        add_car_list()
+        flash('Enter data {}'.format(form.add_document.data))
+    return render_template('add_doc.html', form=form)
 
-# Todo: list all pages
+
+'''Todo: home, add_doc, truck_doc, driver_doc, trailer_doc'''
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

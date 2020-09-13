@@ -5,7 +5,7 @@
     <h1><font size="6" color="#FF4500" face="geneva">
         Hi, {{ user.username }}!
     </font></h1>
-        {% for car in car_list %}
+        {% for car in auto_train_home %}
     <div><p align="center"><b>
         <font size="6" color="#fa8e47" face="serif">
         {{ car.id }}.   {{ car.car_numb }} /
@@ -13,17 +13,7 @@
         </font>
     </b></p></div>
 
-    <form action="" method="post"  novalidate>
 
-        {{ form.hidden_tag() }}
-        <p><font size="6" color="#000080">
-            {{ form.username1.label }}<br>
-            {{ form.username1(size=64) }}<br>
-            {% for error in form.username1.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </font></p>
-    </form>
 
     {% endfor %}
 {% endblock %}

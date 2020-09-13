@@ -5,7 +5,11 @@ from wtforms.validators import DataRequired
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
-    username1 = StringField('Enter car number', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
+
+
+class AddDoc(FlaskForm):
+    add_document = StringField('Enter data', validators=[DataRequired()])
+

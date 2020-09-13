@@ -53,7 +53,26 @@ def add_car_list():
     connection.close()
 
 
+def get_all_auto_trains():
+    connection = psycopg2.connect(host='localhost', database='postgres', port=5432,
+                                  user='postgres', password='levon4202099')
+    cursor = connection.cursor()
+    cursor.execute('SELECT id, car_numb, trailer_numb, driver, phone '
+                   'FROM car_list')
+    s = cursor.fetchall()
+    db_key = ('id', 'car_numb', 'trailer_numb', 'driver', 'phone')
+    auto_train_list = []
+    for i in s:
+        ls = zip(db_key, i)
+        auto_train_list.append(dict(ls))
+
+    return auto_train_list
+    connection.commit()
+    cursor.close()
+    connection.close()
+
 # create_car_list()
 # create_car()
 # create_trailer()
-add_car_list()
+# add_car_list()
+# get_all_auto_trains()
