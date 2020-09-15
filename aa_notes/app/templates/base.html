@@ -1,0 +1,18 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - Notes</title>
+      {% else %}
+      <title>Welcome to Notes</title>
+      {% endif %}
+    </head>
+    <body>
+        <div><font size="5" color="#CD5C5C" face="helvetica">
+            Notes:
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('add_document') }}">Add</a>
+        </font></div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>

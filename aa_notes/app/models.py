@@ -1,4 +1,4 @@
-from a_notes.app.routes import db
+from app import db
 
 
 class Notification(db.Model):
@@ -11,7 +11,7 @@ class Notification(db.Model):
 class Document(db.Model):
     __tablename__ = 'document'
     id = db.Column(db.Integer, primary_key=True)
-    exp_date = db.Column(db.Datetime, nullable=False)
+    exp_date = db.Column(db.Date, nullable=False)
     name = db.Column(db.String, nullable=False)
     notification = db.relationship('Notification', backref='document', lazy=True)
 

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <form action="" method="post"  novalidate>
+
+        {{ form.hidden_tag() }}
+        <p><font size="4" color="#000080">
+            {{ form.truck_license_plate.label }}<br>
+            {{ form.truck_license_plate(size=42) }}<br>
+        </font></p>
+        <p><font size="4" color="#000080">
+            {{ form.trailer_license_plate.label }}<br>
+            {{ form.trailer_license_plate(size=42) }}<br>
+        </font></p>
+        <p><font size="4" color="#000080">
+            {{ form.driver_name.label }}<br>
+            {{ form.driver_name(size=42) }}<br>
+        </font></p>
+        <p><font size="4" color="#000080">
+            {{ form.phone.label }}<br>
+            {{ form.phone(size=42) }}<br>
+        </font></p>
+        <p><font size="4" color="#000080">
+            {{ form.protocol.label }}<br>
+            {{ form.protocol(size=42) }}<br>
+        </font></p>
+        <p><font size="4" color="#000080">
+            {{ form.taxo.label }}<br>
+            {{ form.taxo(size=42) }}<br>
+        </font></p>
+        <p><font size="4" color="#000080">
+            {{ form.msto.label }}<br>
+            {{ form.msto(size=42) }}<br>
+        </font></p>
+        <p><font size="4" color="#000080">
+            {{ form.ekmt.label }}<br>
+            {{ form.ekmt(size=42) }}<br>
+        </font></p>
+        <p><font size="4" color="#000080">
+            {{ form.customs_certificate.label }}<br>
+            {{ form.customs_certificate(size=42) }}<br>
+        </font></p>
+
+    </form>
+
+ {% endblock %}

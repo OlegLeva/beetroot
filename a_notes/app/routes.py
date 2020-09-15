@@ -6,12 +6,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:levon4202099@localhost/[postgres]'
-# app.config.from_object(Config)
+app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-app.config.from_object(Config)
-app.config['SECRET_KEY'] = 'password'
 
 
 @app.route('/')
@@ -33,7 +30,7 @@ def add_document():
     return render_template('add_doc.html', form=form)
 
 
-'''Todo: home, add_doc, truck_doc, driver_doc, trailer_doc'''
+# Todo: home, add_doc, truck_doc, driver_doc, trailer_doc
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
