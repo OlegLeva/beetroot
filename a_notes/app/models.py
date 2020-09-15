@@ -37,11 +37,14 @@ class Trailer(db.Model):
 
 class AutoTrain(db.Model):
     __tablename__ = 'autotrain'
-    id = db.Column(db.Serial, nullable=False)
-    truck_id = db.Column(db.String, primary_key=True)
-    trailer_id = db.Column(db.String, primary_key=True)
-    driver_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Serial, primary_key=True)
+    truck_id = db.Column(db.String, nullable=False)
+    trailer_id = db.Column(db.String, nullable=False)
+    driver_id = db.Column(db.Integer, nullable=False)
     driver_name = db.Column(db.String, nullable=False)
     truck = db.relationship('Truck', uselist=False, back_populates='autotrain')
     trailer = db.relationship('Trailer', uselist=False, back_populates='autotrain')
     driver = db.relationship('Driver', uselist=False, back_populates='autotrain')
+
+    def __repr__(self):
+        return '<{} {} {} {} {}>'.format(self.id, self.truck_id, self.trailer_id, self.driver_name, self.driver_id)
