@@ -42,12 +42,14 @@ class Notification(db.Model):
 
 class AutoTrain(db.Model):
     __tablename__ = 'autotrain'
-    truck_id = db.Column(db.String, primary_key=True)
-    trailer_id = db.Column(db.String, primary_key=True)
-    driver_id = db.Column(db.Integer, primary_key=True)
-    truck = db.relationship('Truck', uselist=False, back_populates='autotrain')
-    trailer = db.relationship('Trailer', uselist=False, back_populates='autotrain')
-    driver = db.relationship('Driver', uselist=False, back_populates='autotrain')
+    truck_id = db.Column(db.String, db.ForeignKey('truck.license_plate'), primary_key=True)
+    trailer_id = db.Column(db.String, db.ForeignKey('trailer.license_plate'), primary_key=True)
+    driver_id = db.Column(db.Integer, db.ForeignKey('driver.id'), primary_key=True)
+    truck = db.relationship('Truck', primaryjoin="AutoTrain.truck_id == Truck.license_plate",
+                            back_populates='truck')
+    trailer = db.relationship('Trailer', primaryjoin="AutoTrain.trailer_id == Trailer.license_plate",
+                              back_populates='trailer')
+    driver = db.relationship('Driver', primaryjoin="AutoTrain.driver_id == Driver.id", back_populates='driver')
 
     def __repr__(self):
         return '<{} {} {}>'.format(self.truck_id, self.trailer_id, self.driver_id)
