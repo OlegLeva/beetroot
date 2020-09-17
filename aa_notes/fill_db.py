@@ -45,7 +45,7 @@ notification1 = Notification(days_before=30, id=documemt1.id)
 notification2 = Notification(days_before=30, id=documemt2.id)
 notification3 = Notification(days_before=30, id=documemt3.id)
 notifications = [notification1, notification2, notification3]
-for d in documemts:
+for d in notifications:
     db.session.add(d)
 db.session.commit()
 
