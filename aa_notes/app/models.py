@@ -29,14 +29,15 @@ class Document(db.Model):
     truck_id = db.Column(db.String, db.ForeignKey('truck.license_plate'), nullable=True)
     trailer_id = db.Column(db.String, db.ForeignKey('trailer.license_plate'), nullable=True)
     driver_id = db.Column(db.Integer, db.ForeignKey('driver.id'), nullable=True)
-    notification = db.relationship('Notification', primaryjoin="Document.id == Notification.id")  # add primaryjoin
+    notification = db.relationship('Notification', 
+                                   primaryjoin="Document.id == Notification.id",
+                                   backref="notification")
 
 
 class Notification(db.Model):
     __tablename__ = 'notification'
     id = db.Column(db.Integer, db.ForeignKey('document.id'), primary_key=True)  # add ForeignKey
     days_before = db.Column(db.Integer, nullable=False)
-    document = db.relationship("Document", uselist=False, backref="notification")
 
 
 class AutoTrain(db.Model):
