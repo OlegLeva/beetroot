@@ -3,6 +3,7 @@ from app.forms import AddDoc, AddTrain
 from app.models import AutoTrain, Truck, Trailer, Driver
 from flask import render_template, flash, redirect, request
 
+
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
 def index():
@@ -24,10 +25,8 @@ def add_train():
     db.session.add(driver)
     db.session.add(train)
     db.session.commit()
-   
+
     return redirect("/index")
-
-
 
 
 @app.route('/add_document', methods=['GET', 'POST'])
@@ -37,4 +36,3 @@ def add_document():
     if form.validate_on_submit():
         flash('Enter data {}'.format(form.add_document.data))
     return render_template('add_data.html', form=form)
-
