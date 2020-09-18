@@ -13,18 +13,18 @@ def index():
 
 @app.route('/add_train', methods=['GET', 'POST'])
 def add_train():
-    truck_lp = request.form['truck_id']
-    truck = Truck(truck_lp)
+    truck = Truck(license_plate=request.form['truck_license_plate'])
+    trailer = Trailer(license_plate=request.form['trailer_license_plate'])
+    driver = Driver(id=request.form['driver_name'])
+    train = AutoTrain(truck_id=truck.license_plate,
+                      trailer_id=trailer.license_plate,
+                      driver_id=driver.id)
     db.session.add(truck)
-    db.session.commit()
-    trailer_lp = request.form['trailer_id']
-    trailer = Trailer(trailer_lp)
     db.session.add(trailer)
-    db.session.commit()
-    driver_lp = request.form['driver_id']
-    driver = Driver(driver_lp)
     db.session.add(driver)
+    db.session.add(train)
     db.session.commit()
+   
     return redirect("/index")
 
 
