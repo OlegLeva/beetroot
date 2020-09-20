@@ -2,13 +2,13 @@
 
 {% block content %}
 
-    {% for train in autotrains %}
+
+    {% for train, driver_phone in autotrains|zip(get_phone) %}
     <div><p align="center"><b>
         <font size="6" color="#fa8e47" face="serif">
-        {{ train.truck_id }}  / {{ train.trailer_id }}   {{train.driver_id}}
+        SCANIA {{ train.truck_id }}  / {{ train.trailer_id }}   {{train.driver_id}}  {{ driver_phone.phone }}
         </font>
     </b></p></div>
-
 
     {% endfor %}
 

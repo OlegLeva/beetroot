@@ -8,8 +8,10 @@ from flask import render_template, flash, redirect, request
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     autotrains = AutoTrain.query.all()
+    get_phone = Driver.query.all()
+
     form = AddTrain()
-    return render_template('index.html', autotrains=autotrains, form=form)
+    return render_template('index.html', autotrains=autotrains, get_phone=get_phone, form=form)
 
 
 @app.route('/add_train', methods=['GET', 'POST'])

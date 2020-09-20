@@ -44,11 +44,13 @@ class AutoTrain(db.Model):
     truck_id = db.Column(db.String, db.ForeignKey('truck.license_plate'), primary_key=True)
     trailer_id = db.Column(db.String, db.ForeignKey('trailer.license_plate'), primary_key=True)
     driver_id = db.Column(db.String, db.ForeignKey('driver.id'), primary_key=True)
+    # phone_id = db.Column(db.String, db.ForeignKey('driver.phone'), primary_key=True)
     truck = db.relationship('Truck', primaryjoin="AutoTrain.truck_id == Truck.license_plate",
                             backref='autotrain')
     trailer = db.relationship('Trailer', primaryjoin="AutoTrain.trailer_id == Trailer.license_plate",
                               backref='autotrain')
     driver = db.relationship('Driver', primaryjoin="AutoTrain.driver_id == Driver.id", backref='autotrain')
+    # phone = db.relationship('Driver', primaryjoin="AutoTrain.phone_id == Driver.phone", backref='autotrain')
 
-    def __repr__(self):
-        return '<{} {} {}>'.format(self.truck_id, self.trailer_id, self.driver_id)
+    # def __repr__(self):
+    #     return '<{} {} {}>'.format(self.truck_id, self.trailer_id, self.driver_id)
