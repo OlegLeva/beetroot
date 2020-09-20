@@ -19,7 +19,8 @@ def add_train():
     truck = Truck(license_plate=request.form['truck_license_plate'])
     trailer = Trailer(license_plate=request.form['trailer_license_plate'])
     driver = Driver(id=request.form['driver_name'], phone=request.form['phone'])
-    train = AutoTrain(truck_id=truck.license_plate,
+    train = AutoTrain(autotrain_id=request.form['id_autotrain'],
+                      truck_id=truck.license_plate,
                       trailer_id=trailer.license_plate,
                       driver_id=driver.id)
     db.session.add(truck)

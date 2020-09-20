@@ -16,6 +16,7 @@ class AddDoc(FlaskForm):
 
 
 class AddTrain(FlaskForm):
+    id_autotrain = StringField('Enter id Autotrain', validators=[DataRequired()])
     truck_license_plate = StringField('Enter truck license plate', validators=[DataRequired()])
     trailer_license_plate = StringField('Enter trailer license plate', validators=[DataRequired()])
     driver_name = StringField('Enter driver name', validators=[DataRequired()])

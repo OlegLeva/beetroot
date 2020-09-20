@@ -6,7 +6,8 @@
     {% for train, driver_phone in autotrains|zip(get_phone) %}
     <div><p align="center"><b>
         <font size="6" color="#fa8e47" face="serif">
-        SCANIA {{ train.truck_id }}  / {{ train.trailer_id }}   {{train.driver_id}}  {{ driver_phone.phone }}
+        {{ train.autotrain_id }}. SCANIA {{ train.truck_id }}  / {{ train.trailer_id }}
+            {{train.driver_id}}  {{ driver_phone.phone }}
         </font>
     </b></p></div>
 
@@ -15,6 +16,10 @@
     <form action="/add_train" method="post"  novalidate>
 
         {{ form.hidden_tag() }}
+        <p><font size="4" color="#000080">
+            {{ form.id_autotrain.label }}<br>
+            {{ form.id_autotrain(size=42) }}<br>
+        </font></p>
         <p><font size="4" color="#000080">
             {{ form.truck_license_plate.label }}<br>
             {{ form.truck_license_plate(size=42) }}<br>

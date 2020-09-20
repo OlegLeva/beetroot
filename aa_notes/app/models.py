@@ -41,6 +41,7 @@ class Notification(db.Model):
 
 class AutoTrain(db.Model):
     __tablename__ = 'autotrain'
+    autotrain_id = db.Column(db.Integer, primary_key=True)
     truck_id = db.Column(db.String, db.ForeignKey('truck.license_plate'), primary_key=True)
     trailer_id = db.Column(db.String, db.ForeignKey('trailer.license_plate'), primary_key=True)
     driver_id = db.Column(db.String, db.ForeignKey('driver.id'), primary_key=True)
@@ -52,5 +53,5 @@ class AutoTrain(db.Model):
     driver = db.relationship('Driver', primaryjoin="AutoTrain.driver_id == Driver.id", backref='autotrain')
     # phone = db.relationship('Driver', primaryjoin="AutoTrain.phone_id == Driver.phone", backref='autotrain')
 
-    # def __repr__(self):
-    #     return '<{} {} {}>'.format(self.truck_id, self.trailer_id, self.driver_id)
+    def __repr__(self):
+        return '<{} {} {}>'.format(self.truck_id, self.trailer_id, self.driver_id)
