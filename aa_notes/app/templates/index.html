@@ -2,34 +2,23 @@
 
 {% block content %}
 
-
+<div class="container">
     {% for train, driver_phone in autotrains|zip(get_phone) %}
-
-<div class="my-1 p-1 bg-white rounded shadow-sm">
-
-    <div class="media text-muted pt-2">
-      <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
-           preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
-          <title>Placeholder</title></svg>
-      <div class="media-body pb-1 mb-0 small lh-125 border-bottom border-gray">
-        <div class="d-flex justify-content-between align-items-center w-100">
-          <h2><strong class="my-2 mr-md-auto font-weight-200">{{ train.autotrain_id }}. SCANIA {{ train.truck_id }}  / {{ train.trailer_id }}
-            {{train.driver_id}}  {{ driver_phone.phone }}</strong></h2>
-          <a href="#">Редактировать</a>
+     <div class="alert alert-info">
+        <div class="my-0 p-0  rounded shadow-sm">
+            <div class="media text-muted pt-0">
+              <div class="media-body pb-1 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                  <h3><strong class="my-0 mr-md-auto font-weight-lighter">{{ train.autotrain_id }}. SCANIA {{ train.truck_id }}  / {{ train.trailer_id }}
+                    {{train.driver_id}}  {{ driver_phone.phone }}</strong></h3>
+                  <h6 class="my-0"><a href="{{train.autotrain_id}}">Редактировать</a></h6>
+                </div>
+              </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
+     </div>
 
     {% endfor %}
-
-
-
-
 
 
     <form action="/add_train" method="post"  novalidate>
@@ -58,5 +47,5 @@
         <input type="submit" class="btn btn-primary btn-lg" name="save" value="save" role="button" >
 
     </form>
-
+</div>
 {% endblock %}

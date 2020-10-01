@@ -21,4 +21,4 @@ class AddTrain(FlaskForm):
     trailer_license_plate = StringField('Enter trailer license plate', validators=[DataRequired()])
     driver_name = StringField('Enter driver name', validators=[DataRequired()])
     phone = StringField('Enter phone', validators=[DataRequired()])
-    submit = SubmitField('Add')
+
