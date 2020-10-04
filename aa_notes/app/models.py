@@ -4,20 +4,26 @@ from app import db
 class Truck(db.Model):
     __tablename__ = 'truck'
     license_plate = db.Column(db.String, primary_key=True)
-    documents = db.relationship('Document', backref='truck', lazy=True)
+    documents = db.relationship('Document',
+                                primaryjoin="Truck.license_plate == Document.truck_id",
+                                backref='truck')
 
 
 class Driver(db.Model):
     __tablename__ = 'driver'
     id = db.Column(db.String, primary_key=True)
     phone = db.Column(db.String, nullable=False)
-    document = db.relationship('Document', backref='driver', lazy=True)
+    document = db.relationship('Document',
+                               primaryjoin="Driver.id == Document.driver_id",
+                               backref='driver')
 
 
 class Trailer(db.Model):
     __tablename__ = 'trailer'
     license_plate = db.Column(db.String, primary_key=True)
-    document = db.relationship('Document', backref='trailer', lazy=True)
+    document = db.relationship('Document',
+                               primaryjoin="Trailer.license_plate == Document.trailer_id",
+                               backref='trailer')
 
 
 class Document(db.Model):
@@ -28,7 +34,8 @@ class Document(db.Model):
     truck_id = db.Column(db.String, db.ForeignKey('truck.license_plate'), nullable=True)
     trailer_id = db.Column(db.String, db.ForeignKey('trailer.license_plate'), nullable=True)
     driver_id = db.Column(db.String, db.ForeignKey('driver.id'), nullable=True)
-    notification = db.relationship('Notification', 
+
+    notification = db.relationship('Notification',
                                    primaryjoin="Document.id == Notification.id",
                                    backref="notification")
 
@@ -45,13 +52,11 @@ class AutoTrain(db.Model):
     truck_id = db.Column(db.String, db.ForeignKey('truck.license_plate'), primary_key=True)
     trailer_id = db.Column(db.String, db.ForeignKey('trailer.license_plate'), primary_key=True)
     driver_id = db.Column(db.String, db.ForeignKey('driver.id'), primary_key=True)
-    # phone_id = db.Column(db.String, db.ForeignKey('driver.phone'), primary_key=True)
     truck = db.relationship('Truck', primaryjoin="AutoTrain.truck_id == Truck.license_plate",
                             backref='autotrain')
     trailer = db.relationship('Trailer', primaryjoin="AutoTrain.trailer_id == Trailer.license_plate",
                               backref='autotrain')
     driver = db.relationship('Driver', primaryjoin="AutoTrain.driver_id == Driver.id", backref='autotrain')
-    # phone = db.relationship('Driver', primaryjoin="AutoTrain.phone_id == Driver.phone", backref='autotrain')
 
     def __repr__(self):
         return '<{} {} {}>'.format(self.truck_id, self.trailer_id, self.driver_id)

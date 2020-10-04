@@ -1,6 +1,6 @@
 from app import app, db
 from app.forms import AddDoc, AddTrain
-from app.models import AutoTrain, Truck, Trailer, Driver
+from app.models import AutoTrain, Truck, Trailer, Driver, Document
 from flask import render_template, flash, redirect, request
 
 
@@ -32,10 +32,31 @@ def add_train():
     return redirect("/index")
 
 
+@app.route('/add_doc', methods=['GET', 'POST'])
+def add_doc():
+    if request.method == 'POST':
+        name = request.form['name']
+        exp_date = request.form['exp_date']
+        truck_id = request.form['truck_id']
+        trailer_id = request.form['trailer_id']
+        driver_id = request.form['driver_id']
+
+        document = Document(name=name, exp_date=exp_date, trailer_id=trailer_id, truck_id=truck_id, driver_id=driver_id)
+
+        # try:
+        db.session.add(document)
+        db.session.commit()
+        return redirect("/index")
+        # except:
+        #     return 'Введены неверные данные'
+
+    else:
+        return render_template('add_doc.html')
+
+
 @app.route('/add_document', methods=['GET', 'POST'])
 def add_document():
     # add document and link it to truck/driver/trailer
     form = AddDoc()
-    if form.validate_on_submit():
-        flash('Enter data {}'.format(form.add_document.data))
+
     return render_template('add_data.html', form=form)
