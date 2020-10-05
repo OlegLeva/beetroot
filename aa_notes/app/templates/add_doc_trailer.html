@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="bg-info" >
+<blockquote class="blockquote text-center">
+<h1><span class="align-top text-white font-weight-bold ">Добавление документов на прицеп</span></h1>
+</blockquote>
+<div class="container mt-5 align-top" >
+    <form method="post">
+        <input type="text" name="name" id="name" class="form-control" placeholder="Введите название документа"><br>
+        <input type="date" name="exp_date" id="exp_date" class="form-control" placeholder="Введите дату окончания"><br>
+        <input type="text" name="trailer_id" id="trailer_id" class="form-control" placeholder="Введите гос. номер прицепа"><br>
+        <input type="submit" class="btn btn-success bg-danger" value="Add doc"><br>
+
+    </form>
+</div>
+</div>
+
+ {% endblock %}

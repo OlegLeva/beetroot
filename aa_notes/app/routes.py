@@ -23,23 +23,43 @@ def add_train():
                       truck_id=truck.license_plate,
                       trailer_id=trailer.license_plate,
                       driver_id=driver.id)
-    db.session.add(truck)
-    db.session.add(trailer)
-    db.session.add(driver)
-    db.session.add(train)
-    db.session.commit()
+    try:
+        db.session.add(truck)
+        db.session.add(trailer)
+        db.session.add(driver)
+        db.session.add(train)
+        db.session.commit()
 
-    return redirect("/index")
+        return redirect("/index")
+    except:
+        return redirect("/index")
 
 
-@app.route('/add_doc', methods=['GET', 'POST'])
-def add_doc():
+@app.route('/add_doc_truck', methods=['GET', 'POST'])
+def add_doc_truck():
     if request.method == 'POST':
         name = request.form['name']
         exp_date = request.form['exp_date']
-        # truck_id = request.form['truck_id']
+        truck_id = request.form['truck_id']
+
+        document = Document(name=name, exp_date=exp_date, truck_id=truck_id)
+
+        try:
+            db.session.add(document)
+            db.session.commit()
+            return redirect("/index")
+        except:
+            return 'Введены неверные данные'
+    else:
+        return render_template('add_doc_truck.html')
+
+
+@app.route('/add_doc_trailer', methods=['GET', 'POST'])
+def add_doc_trailer():
+    if request.method == 'POST':
+        name = request.form['name']
+        exp_date = request.form['exp_date']
         trailer_id = request.form['trailer_id']
-        # driver_id = request.form['driver_id']
 
         document = Document(name=name, exp_date=exp_date, trailer_id=trailer_id)
 
@@ -49,9 +69,27 @@ def add_doc():
             return redirect("/index")
         except:
             return 'Введены неверные данные'
-
     else:
-        return render_template('add_doc.html')
+        return render_template('add_doc_trailer.html')
+
+
+@app.route('/add_doc_driver', methods=['GET', 'POST'])
+def add_doc_driver():
+    if request.method == 'POST':
+        name = request.form['name']
+        exp_date = request.form['exp_date']
+        driver_id = request.form['driver_id']
+
+        document = Document(name=name, exp_date=exp_date, driver_id=driver_id)
+
+        try:
+            db.session.add(document)
+            db.session.commit()
+            return redirect("/index")
+        except:
+            return 'Введены неверные данные'
+    else:
+        return render_template('add_doc_driver.html')
 
 
 @app.route('/add_document', methods=['GET', 'POST'])
