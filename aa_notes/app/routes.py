@@ -37,18 +37,18 @@ def add_doc():
     if request.method == 'POST':
         name = request.form['name']
         exp_date = request.form['exp_date']
-        truck_id = request.form['truck_id']
+        # truck_id = request.form['truck_id']
         trailer_id = request.form['trailer_id']
-        driver_id = request.form['driver_id']
+        # driver_id = request.form['driver_id']
 
-        document = Document(name=name, exp_date=exp_date, trailer_id=trailer_id, truck_id=truck_id, driver_id=driver_id)
+        document = Document(name=name, exp_date=exp_date, trailer_id=trailer_id)
 
-        # try:
-        db.session.add(document)
-        db.session.commit()
-        return redirect("/index")
-        # except:
-        #     return 'Введены неверные данные'
+        try:
+            db.session.add(document)
+            db.session.commit()
+            return redirect("/index")
+        except:
+            return 'Введены неверные данные'
 
     else:
         return render_template('add_doc.html')
