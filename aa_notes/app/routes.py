@@ -1,7 +1,7 @@
 from app import app, db
-from app.forms import AddDoc, AddTrain
-from app.models import AutoTrain, Truck, Trailer, Driver, Document
-from flask import render_template, flash, redirect, request
+from app.forms import AddTrain
+from app.models import AutoTrain, Truck, Trailer, Driver, Document, Notification
+from flask import render_template, redirect, request
 
 
 @app.route('/')
@@ -17,22 +17,22 @@ def index():
 @app.route('/add_train', methods=['GET', 'POST'])
 def add_train():
     truck = Truck(license_plate=request.form['truck_license_plate'])
-    trailer = Trailer(license_plate=request.form['trailer_license_plate'])
+    trailer = Trailer(license_plate1=request.form['trailer_license_plate'])
     driver = Driver(id=request.form['driver_name'], phone=request.form['phone'])
     train = AutoTrain(autotrain_id=request.form['id_autotrain'],
                       truck_id=truck.license_plate,
-                      trailer_id=trailer.license_plate,
+                      trailer_id=trailer.license_plate1,
                       driver_id=driver.id)
-    try:
-        db.session.add(truck)
-        db.session.add(trailer)
-        db.session.add(driver)
-        db.session.add(train)
-        db.session.commit()
+# try:
+    db.session.add(truck)
+    db.session.add(trailer)
+    db.session.add(driver)
+    db.session.add(train)
+    db.session.commit()
 
-        return redirect("/index")
-    except:
-        return redirect("/index")
+    return redirect("/index")
+# except:
+#     return render_template("/add_train")
 
 
 @app.route('/add_doc_truck', methods=['GET', 'POST'])
@@ -44,12 +44,17 @@ def add_doc_truck():
 
         document = Document(name=name, exp_date=exp_date, truck_id=truck_id)
 
-        try:
-            db.session.add(document)
-            db.session.commit()
-            return redirect("/index")
-        except:
-            return 'Введены неверные данные'
+    # try:
+        db.session.add(document)
+        db.session.commit()
+        days_before = request.form['days_before']
+        notified = Notification(id=(Document.query.filter_by(name='name').first().id), days_before=days_before)
+        db.session.add(notified)
+        db.session.commit()
+
+        return redirect("/index")
+    # except:
+    #     return 'Введены неверные данные'
     else:
         return render_template('add_doc_truck.html')
 
@@ -92,9 +97,3 @@ def add_doc_driver():
         return render_template('add_doc_driver.html')
 
 
-@app.route('/add_document', methods=['GET', 'POST'])
-def add_document():
-    # add document and link it to truck/driver/trailer
-    form = AddDoc()
-
-    return render_template('add_data.html', form=form)

@@ -20,9 +20,9 @@ class Driver(db.Model):
 
 class Trailer(db.Model):
     __tablename__ = 'trailer'
-    license_plate = db.Column(db.String, primary_key=True)
+    license_plate1 = db.Column(db.String, primary_key=True)
     document = db.relationship('Document',
-                               primaryjoin="Trailer.license_plate == Document.trailer_id",
+                               primaryjoin="Trailer.license_plate1 == Document.trailer_id",
                                backref='trailer')
 
 
@@ -32,7 +32,7 @@ class Document(db.Model):
     exp_date = db.Column(db.Date, nullable=False)
     name = db.Column(db.String(40), nullable=False)
     truck_id = db.Column(db.String, db.ForeignKey('truck.license_plate'), nullable=True)
-    trailer_id = db.Column(db.String, db.ForeignKey('trailer.license_plate'), nullable=True)
+    trailer_id = db.Column(db.String, db.ForeignKey('trailer.license_plate1'), nullable=True)
     driver_id = db.Column(db.String, db.ForeignKey('driver.id'), nullable=True)
 
     notification = db.relationship('Notification',
@@ -50,11 +50,11 @@ class AutoTrain(db.Model):
     __tablename__ = 'autotrain'
     autotrain_id = db.Column(db.Integer, primary_key=True)
     truck_id = db.Column(db.String, db.ForeignKey('truck.license_plate'), primary_key=True)
-    trailer_id = db.Column(db.String, db.ForeignKey('trailer.license_plate'), primary_key=True)
+    trailer_id = db.Column(db.String, db.ForeignKey('trailer.license_plate1'), primary_key=True)
     driver_id = db.Column(db.String, db.ForeignKey('driver.id'), primary_key=True)
     truck = db.relationship('Truck', primaryjoin="AutoTrain.truck_id == Truck.license_plate",
                             backref='autotrain')
-    trailer = db.relationship('Trailer', primaryjoin="AutoTrain.trailer_id == Trailer.license_plate",
+    trailer = db.relationship('Trailer', primaryjoin="AutoTrain.trailer_id == Trailer.license_plate1",
                               backref='autotrain')
     driver = db.relationship('Driver', primaryjoin="AutoTrain.driver_id == Driver.id", backref='autotrain')
 

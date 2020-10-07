@@ -14,9 +14,9 @@ for t in trucks:
 db.session.commit()
 
 
-trailer1 = Trailer(license_plate="BI2324XK")
-trailer2 = Trailer(license_plate="BI3844XM")
-trailer3 = Trailer(license_plate="BI4663XK")
+trailer1 = Trailer(license_plate1="BI2324XK")
+trailer2 = Trailer(license_plate1="BI3844XM")
+trailer3 = Trailer(license_plate1="BI4663XK")
 trailers = [trailer1, trailer2, trailer3]
 for t in trailers:
     db.session.add(t)
@@ -51,11 +51,11 @@ db.session.commit()
 
 
 autotrain1 = AutoTrain(autotrain_id=1, truck_id=truck1.license_plate,
-                       trailer_id=trailer1.license_plate, driver_id=driver1.id)
+                       trailer_id=trailer1.license_plate1, driver_id=driver1.id)
 autotrain2 = AutoTrain(autotrain_id=2, truck_id=truck2.license_plate,
-                       trailer_id=trailer2.license_plate, driver_id=driver2.id)
+                       trailer_id=trailer2.license_plate1, driver_id=driver2.id)
 autotrain3 = AutoTrain(autotrain_id=3, truck_id=truck3.license_plate,
-                       trailer_id=trailer3.license_plate, driver_id=driver3.id)
+                       trailer_id=trailer3.license_plate1, driver_id=driver3.id)
 autotrains = [autotrain1, autotrain2, autotrain3]
 for a in autotrains:
     db.session.add(a)
