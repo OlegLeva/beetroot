@@ -23,9 +23,9 @@ for t in trailers:
 db.session.commit()
 
 
-driver1 = Driver(phone="+380980353438", id="Терещенко Дмитрий")
-driver2 = Driver(phone="+380679265219", id="Возный Андрей")
-driver3 = Driver(phone="+380974537879", id="Возный Виталий")
+driver1 = Driver(id="Терещенко Дмитрий")
+driver2 = Driver(id="Возный Андрей")
+driver3 = Driver(id="Возный Виталий")
 drivers = [driver1, driver2, driver3]
 for d in drivers:
     db.session.add(d)
@@ -50,12 +50,12 @@ for d in notifications:
 db.session.commit()
 
 
-autotrain1 = AutoTrain(autotrain_id=1, truck_id=truck1.license_plate,
-                       trailer_id=trailer1.license_plate1, driver_id=driver1.id)
-autotrain2 = AutoTrain(autotrain_id=2, truck_id=truck2.license_plate,
-                       trailer_id=trailer2.license_plate1, driver_id=driver2.id)
-autotrain3 = AutoTrain(autotrain_id=3, truck_id=truck3.license_plate,
-                       trailer_id=trailer3.license_plate1, driver_id=driver3.id)
+autotrain1 = AutoTrain(id=1, truck_id=truck1.license_plate,
+                       trailer_id=trailer1.license_plate1, driver_id=driver1.id, phone_id="+380980353438")
+autotrain2 = AutoTrain(id=2, truck_id=truck2.license_plate,
+                       trailer_id=trailer2.license_plate1, driver_id=driver2.id, phone_id="+380679265219")
+autotrain3 = AutoTrain(id=3, truck_id=truck3.license_plate,
+                       trailer_id=trailer3.license_plate1, driver_id=driver3.id, phone_id="+380974537879")
 autotrains = [autotrain1, autotrain2, autotrain3]
 for a in autotrains:
     db.session.add(a)

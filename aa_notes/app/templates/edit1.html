@@ -3,22 +3,17 @@
 {% block content %}
 
 <div class="container">
-<!--    {% for train, driver_phone in autotrains|zip(get_phone) %}-->
      <div class="alert alert-info">
         <div class="my-0 p-0  rounded shadow-sm">
             <div class="media text-muted pt-0">
               <div class="media-body pb-1 mb-0 small lh-125 border-bottom border-gray">
                 <div class="d-flex justify-content-between align-items-center w-100">
-                  <h3><strong class="my-0 mr-md-auto font-weight-lighter">{{ autotrain1.autotrain_id }}. SCANIA {{ autotrain1.truck_id }}  /
-                      {{ autotrain1.trailer_id }} {{autotrain1.driver_id}} </strong></h3>
-<!--                  <h6 class="my-0"><a href="">Редактировать</a></h6>-->
+                  <h3><strong class="my-0 mr-md-auto font-weight-lighter"> {{ autotrain.id }}.   SCANIA {{autotrain.truck_id}}
+                      / {{autotrain.trailer_id}}   {{autotrain.driver_id}} {{autotrain.phone_id}}</strong></h3>
                 </div>
               </div>
             </div>
         </div>
      </div>
-
-<!--    {% endfor %}-->
-
 </div>
 {% endblock %}

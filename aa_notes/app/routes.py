@@ -14,22 +14,24 @@ def index():
     return render_template('index.html', autotrains=autotrains, get_phone=get_phone, form=form)
 
 
-@app.route('/index/<int:autotrain_id>')
-def edit1(autotrain_id):
-    autotrain1 = AutoTrain.query.get(autotrain_id)
+@app.route('/index/<int:id>')
+def edit1(id):
+    autotrain = AutoTrain.query.get(id)
 
-    return render_template('edit1.html', autotrain=autotrain1)
+    return render_template('edit1.html', autotrain=autotrain)
 
 
+# NEW FORM
 @app.route('/add_autotrain', methods=['GET', 'POST'])
 def add_autotrain():
     if request.method == 'POST':
-        truck = Truck(license_plate=request.form['truck_license_plate'])
-        trailer = Trailer(license_plate1=request.form['trailer_license_plate'])
-        driver = Driver(id=request.form['driver_name'], phone=request.form['phone'])
-        train = AutoTrain(truck_id=truck.license_plate,
-                          trailer_id=trailer.license_plate1,
-                          driver_id=driver.id)
+        train = AutoTrain(id=request.form['id_autotrain'],
+                          truck_id=request.form['truck_license_plate'],
+                          trailer_id=request.form['trailer_license_plate'],
+                          driver_id=request.form['driver_name'])
+        truck = Truck(license_plate=train.truck_id)
+        trailer = Trailer(license_plate1=train.trailer_id)
+        driver = Driver(id=train.driver_id, phone=request.form['phone'])
 
         db.session.add(truck)
         db.session.add(trailer)
@@ -43,12 +45,13 @@ def add_autotrain():
 @app.route('/add_train', methods=['GET', 'POST'])
 def add_train():
     truck = Truck(license_plate=request.form['truck_license_plate'])
-    trailer = Trailer(license_plate=request.form['trailer_license_plate'])
-    driver = Driver(id=request.form['driver_name'], phone=request.form['phone'])
-    train = AutoTrain(autotrain_id=request.form['id_autotrain'],
+    trailer = Trailer(license_plate1=request.form['trailer_license_plate'])
+    driver = Driver(id=request.form['driver_name'])
+    train = AutoTrain(id=request.form['id_autotrain'],
                       truck_id=truck.license_plate,
-                      trailer_id=trailer.license_plate,
-                      driver_id=driver.id)
+                      trailer_id=trailer.license_plate1,
+                      driver_id=driver.id,
+                      phone_id=request.form['phone'])
     try:
         db.session.add(truck)
         db.session.add(trailer)

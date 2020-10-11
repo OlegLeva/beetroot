@@ -12,7 +12,6 @@ class Truck(db.Model):
 class Driver(db.Model):
     __tablename__ = 'driver'
     id = db.Column(db.String, primary_key=True)
-    phone = db.Column(db.String, nullable=False)
     document = db.relationship('Document',
                                primaryjoin="Driver.id == Document.driver_id",
                                backref='driver')
@@ -48,10 +47,11 @@ class Notification(db.Model):
 
 class AutoTrain(db.Model):
     __tablename__ = 'autotrain'
-    autotrain_id = db.Column(db.Integer, primary_key=True)
-    truck_id = db.Column(db.String, db.ForeignKey('truck.license_plate'), primary_key=True)
-    trailer_id = db.Column(db.String, db.ForeignKey('trailer.license_plate1'), primary_key=True)
-    driver_id = db.Column(db.String, db.ForeignKey('driver.id'), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    truck_id = db.Column(db.String, db.ForeignKey('truck.license_plate'))
+    trailer_id = db.Column(db.String, db.ForeignKey('trailer.license_plate1'))
+    driver_id = db.Column(db.String, db.ForeignKey('driver.id'))
+    phone_id = db.Column(db.String, nullable=False)
     truck = db.relationship('Truck', primaryjoin="AutoTrain.truck_id == Truck.license_plate",
                             backref='autotrain')
     trailer = db.relationship('Trailer', primaryjoin="AutoTrain.trailer_id == Trailer.license_plate1",
@@ -59,4 +59,4 @@ class AutoTrain(db.Model):
     driver = db.relationship('Driver', primaryjoin="AutoTrain.driver_id == Driver.id", backref='autotrain')
 
     def __repr__(self):
-        return '<{} {} {}>'.format(self.truck_id, self.trailer_id, self.driver_id)
+        return '<{} {} {} {}>'.format(self.truck_id, self.trailer_id, self.driver_id, self.phone_id)
