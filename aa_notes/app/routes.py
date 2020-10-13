@@ -21,6 +21,16 @@ def edit1(id):
     return render_template('edit1.html', autotrain=autotrain)
 
 
+@app.route('/index/<int:id>/del')
+def delete(id):
+    autotrain = AutoTrain.query.get_or_404(id)
+
+    db.session.delete(autotrain)
+    db.session.commit()
+
+    return redirect("/index")
+
+
 # NEW FORM
 @app.route('/add_autotrain', methods=['GET', 'POST'])
 def add_autotrain():

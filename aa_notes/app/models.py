@@ -5,24 +5,24 @@ class Truck(db.Model):
     __tablename__ = 'truck'
     license_plate = db.Column(db.String, primary_key=True)
     documents = db.relationship('Document',
-                                primaryjoin="Truck.license_plate == Document.truck_id",
-                                backref='truck')
+                                primaryjoin="Truck.license_plate == Document.truck_id", cascade="all,delete",
+                                backref='truck', passive_deletes=True)
 
 
 class Driver(db.Model):
     __tablename__ = 'driver'
     id = db.Column(db.String, primary_key=True)
     document = db.relationship('Document',
-                               primaryjoin="Driver.id == Document.driver_id",
-                               backref='driver')
+                               primaryjoin="Driver.id == Document.driver_id", cascade="all,delete",
+                               backref='driver', passive_deletes=True)
 
 
 class Trailer(db.Model):
     __tablename__ = 'trailer'
     license_plate1 = db.Column(db.String, primary_key=True)
     document = db.relationship('Document',
-                               primaryjoin="Trailer.license_plate1 == Document.trailer_id",
-                               backref='trailer')
+                               primaryjoin="Trailer.license_plate1 == Document.trailer_id", cascade="all,delete",
+                               backref='trailer', passive_deletes=True)
 
 
 class Document(db.Model):
@@ -35,7 +35,7 @@ class Document(db.Model):
     driver_id = db.Column(db.String, db.ForeignKey('driver.id'), nullable=True)
 
     notification = db.relationship('Notification',
-                                   primaryjoin="Document.id == Notification.id",
+                                   primaryjoin="Document.id == Notification.id", cascade="all,delete",
                                    backref="notification")
 
 
@@ -52,11 +52,12 @@ class AutoTrain(db.Model):
     trailer_id = db.Column(db.String, db.ForeignKey('trailer.license_plate1'))
     driver_id = db.Column(db.String, db.ForeignKey('driver.id'))
     phone_id = db.Column(db.String, nullable=False)
-    truck = db.relationship('Truck', primaryjoin="AutoTrain.truck_id == Truck.license_plate",
+    truck = db.relationship('Truck', primaryjoin="AutoTrain.truck_id == Truck.license_plate", cascade="all,delete",
                             backref='autotrain')
-    trailer = db.relationship('Trailer', primaryjoin="AutoTrain.trailer_id == Trailer.license_plate1",
+    trailer = db.relationship('Trailer', primaryjoin="AutoTrain.trailer_id == Trailer.license_plate1", cascade="all,delete",
                               backref='autotrain')
-    driver = db.relationship('Driver', primaryjoin="AutoTrain.driver_id == Driver.id", backref='autotrain')
+    driver = db.relationship('Driver', primaryjoin="AutoTrain.driver_id == Driver.id", cascade="all,delete",
+                             backref='autotrain')
 
     def __repr__(self):
         return '<{} {} {} {}>'.format(self.truck_id, self.trailer_id, self.driver_id, self.phone_id)
