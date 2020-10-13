@@ -82,17 +82,17 @@ def add_doc_truck():
         truck_id = request.form['truck_id']
         document = Document(name=name, exp_date=exp_date, truck_id=truck_id)
 
-        days_before = request.form['days_before']
-        notified = Notification(id=Document.query.filter_by(name='name').first().id, days_before=days_before)
+        # days_before = request.form['days_before']
+        # notified = Notification(id=Document.query.filter_by(name='name').first().id, days_before=days_before)
 
-        # try:
-        db.session.add(document)
-        db.session.add(notified)
-        db.session.commit()
+        try:
+            db.session.add(document)
+            # db.session.add(notified)
+            db.session.commit()
 
-        return redirect("/index")
-    # except:
-    #     return 'Введены неверные данные'
+            return render_template('add_doc_truck.html')
+        except:
+            return 'Введены неверные данные'
     else:
         return render_template('add_doc_truck.html')
 
@@ -109,7 +109,7 @@ def add_doc_trailer():
         try:
             db.session.add(document)
             db.session.commit()
-            return redirect("/index")
+            return render_template('add_doc_trailer.html')
         except:
             return 'Введены неверные данные'
     else:
@@ -128,7 +128,7 @@ def add_doc_driver():
         try:
             db.session.add(document)
             db.session.commit()
-            return redirect("/index")
+            return render_template('add_doc_driver.html')
         except:
             return 'Введены неверные данные'
     else:
