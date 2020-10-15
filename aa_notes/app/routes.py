@@ -14,11 +14,11 @@ def index():
     return render_template('index.html', autotrains=autotrains, get_phone=get_phone, form=form)
 
 
-@app.route('/index/<int:id>')
-def edit1(id):
+@app.route('/index/<int:id>/edit')
+def edit(id):
     autotrain = AutoTrain.query.get(id)
 
-    return render_template('edit1.html', autotrain=autotrain)
+    return render_template('edit.html', autotrain=autotrain)
 
 
 @app.route('/index/<int:id>/del')
