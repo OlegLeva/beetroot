@@ -14,7 +14,7 @@ def index():
     return render_template('index.html', autotrains=autotrains, get_phone=get_phone, form=form)
 
 
-@app.route('/index/<int:id>/edit')
+@app.route('/index/<int:id>/edit', methods=['GET', 'POST'])
 def edit(id):
     autotrain = AutoTrain.query.get(id)
 
@@ -25,10 +25,12 @@ def edit(id):
 def delete(id):
     autotrain = AutoTrain.query.get_or_404(id)
 
-    db.session.delete(autotrain)
-    db.session.commit()
-
-    return redirect("/index")
+    try:
+        db.session.delete(autotrain)
+        db.session.commit()
+        return redirect("/index")
+    except:
+        return "При удалении произошла ошибка"
 
 
 # NEW FORM
@@ -38,18 +40,25 @@ def add_autotrain():
         train = AutoTrain(id=request.form['id_autotrain'],
                           truck_id=request.form['truck_license_plate'],
                           trailer_id=request.form['trailer_license_plate'],
-                          driver_id=request.form['driver_name'])
+                          driver_id=request.form['driver_name'],
+                          phone_id=request.form['phone'])
         truck = Truck(license_plate=train.truck_id)
         trailer = Trailer(license_plate1=train.trailer_id)
-        driver = Driver(id=train.driver_id, phone=request.form['phone'])
+        driver = Driver(id=train.driver_id)
 
+        db.session.add(train)
         db.session.add(truck)
         db.session.add(trailer)
         db.session.add(driver)
-        db.session.add(train)
         db.session.commit()
 
+        return redirect("/index")
+
+    else:
         return render_template("/add_autotrain.html")
+
+
+# import pdb; pdb.set_trace()
 
 
 @app.route('/add_train', methods=['GET', 'POST'])
