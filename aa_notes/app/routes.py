@@ -1,5 +1,4 @@
 from app import app, db
-from app.forms import AddTrain
 from app.models import AutoTrain, Truck, Trailer, Driver, Document, Notification
 from flask import render_template, redirect, request
 
@@ -10,8 +9,7 @@ def index():
     autotrains = AutoTrain.query.all()
     get_phone = Driver.query.all()
 
-    form = AddTrain()
-    return render_template('index.html', autotrains=autotrains, get_phone=get_phone, form=form)
+    return render_template('index.html', autotrains=autotrains, get_phone=get_phone)
 
 
 @app.route('/index/<int:id>/edit', methods=['GET', 'POST'])
@@ -46,41 +44,22 @@ def add_autotrain():
         trailer = Trailer(license_plate1=train.trailer_id)
         driver = Driver(id=train.driver_id)
 
-        db.session.add(train)
-        db.session.add(truck)
-        db.session.add(trailer)
-        db.session.add(driver)
-        db.session.commit()
+        try:
+            db.session.add(train)
+            db.session.add(truck)
+            db.session.add(trailer)
+            db.session.add(driver)
+            db.session.commit()
 
-        return redirect("/index")
+            return redirect("/index")
+        except:
+            return "Введены неверные данные"
 
     else:
         return render_template("/add_autotrain.html")
 
 
 # import pdb; pdb.set_trace()
-
-
-@app.route('/add_train', methods=['GET', 'POST'])
-def add_train():
-    truck = Truck(license_plate=request.form['truck_license_plate'])
-    trailer = Trailer(license_plate1=request.form['trailer_license_plate'])
-    driver = Driver(id=request.form['driver_name'])
-    train = AutoTrain(id=request.form['id_autotrain'],
-                      truck_id=truck.license_plate,
-                      trailer_id=trailer.license_plate1,
-                      driver_id=driver.id,
-                      phone_id=request.form['phone'])
-    try:
-        db.session.add(truck)
-        db.session.add(trailer)
-        db.session.add(driver)
-        db.session.add(train)
-        db.session.commit()
-
-        return redirect("/index")
-    except:
-        return redirect("/index")
 
 
 @app.route('/add_doc_truck', methods=['GET', 'POST'])

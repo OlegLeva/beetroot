@@ -21,32 +21,5 @@
 
     {% endfor %}
 
-
-    <form action="/add_train" method="post"  novalidate>
-
-        {{ form.hidden_tag() }}
-        <p><font size="4" color="#000080">
-            {{ form.id_autotrain.label }}<br>
-            {{ form.id_autotrain(size=42) }}<br>
-        </font></p>
-        <p><font size="4" color="#000080">
-            {{ form.truck_license_plate.label }}<br>
-            {{ form.truck_license_plate(size=42) }}<br>
-        </font></p>
-        <p><font size="4" color="#000080">
-            {{ form.trailer_license_plate.label }}<br>
-            {{ form.trailer_license_plate(size=42) }}<br>
-        </font></p>
-        <p><font size="4" color="#000080">
-            {{ form.driver_name.label }}<br>
-            {{ form.driver_name(size=42) }}<br>
-        </font></p>
-        <p><font size="4" color="#000080">
-            {{ form.phone.label }}<br>
-            {{ form.phone(size=42) }}<br>
-        </font></p>
-        <input type="submit" class="btn btn-primary btn-lg" name="save" value="save" role="button" >
-
-    </form>
 </div>
 {% endblock %}
