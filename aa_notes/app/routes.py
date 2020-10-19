@@ -16,7 +16,27 @@ def index():
 def edit(id):
     autotrain = AutoTrain.query.get(id)
 
-    return render_template('edit.html', autotrain=autotrain)
+    if request.method == 'POST':
+        autotrain.train = AutoTrain(id=request.form['id_autotrain'],
+                          truck_id=request.form['truck_license_plate'],
+                          trailer_id=request.form['trailer_license_plate'],
+                          driver_id=request.form['driver_name'],
+                          phone_id=request.form['phone'])
+        autotrain.truck = Truck(license_plate=autotrain.train.truck_id)
+        autotrain.trailer = Trailer(license_plate1=autotrain.train.trailer_id)
+        autotrain.driver = Driver(driver_name=autotrain.train.driver_id)
+
+    # try:
+        db.session.commit()
+
+        return redirect("/index")
+    # except:
+    #     return "При редактировании статьи произошла ошибка"
+
+    else:
+        return render_template('edit.html', autotrain=autotrain)
+
+
 
 
 @app.route('/index/<int:id>/del')
@@ -42,7 +62,7 @@ def add_autotrain():
                           phone_id=request.form['phone'])
         truck = Truck(license_plate=train.truck_id)
         trailer = Trailer(license_plate1=train.trailer_id)
-        driver = Driver(id=train.driver_id)
+        driver = Driver(driver_name=train.driver_id)
 
         try:
             db.session.add(train)
