@@ -24,7 +24,7 @@ def edit(id):
                           phone_id=request.form['phone'])
         autotrain.truck = Truck(license_plate=autotrain.train.truck_id)
         autotrain.trailer = Trailer(license_plate1=autotrain.train.trailer_id)
-        autotrain.driver = Driver(driver_name=autotrain.train.driver_id)
+        autotrain.driver = Driver(id=autotrain.train.driver_id)
 
     # try:
         db.session.commit()
@@ -62,7 +62,7 @@ def add_autotrain():
                           phone_id=request.form['phone'])
         truck = Truck(license_plate=train.truck_id)
         trailer = Trailer(license_plate1=train.trailer_id)
-        driver = Driver(driver_name=train.driver_id)
+        driver = Driver(id=train.driver_id)
 
         try:
             db.session.add(train)
