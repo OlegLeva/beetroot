@@ -36,15 +36,6 @@
         "city": "Kremenchuk"
     },
     {
-        "id": "5",
-        "first_name": "Dmitriy",
-        "last_name": "Ayzenshtok",
-        "full_name": "Dmitriy Ayzenshtok",
-        "phone": "+12163554248",
-        "region": "Ohio",
-        "city": "Clevelend"
-    },
-    {
         "id": "6",
         "first_name": "Maxim",
         "last_name": "Polshcha",
@@ -52,5 +43,14 @@
         "phone": "+16146327711",
         "region": "Ohio",
         "city": "Columbus"
+    },
+    {
+        "id": "7",
+        "first_name": "Dimasik",
+        "last_name": "Asik",
+        "full_name": "Dimasik Asik",
+        "phone": "8888888",
+        "region": "Oh",
+        "city": "Cliv"
     }
 ]
