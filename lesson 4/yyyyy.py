@@ -7,8 +7,8 @@ for d in ls:
 
     print(d)
 
-a = ['a', 'b', 'c', 'd']
-b = ['w', 'x', 'y', 'z']
+a = ['a', 'b', 'c', 'd', 'ff']
+b = ['w', 'x', 'y', 'z', 'RR']
 
 for k, j in zip(a, b):
     print(k, j)

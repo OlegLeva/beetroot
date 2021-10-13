@@ -50,5 +50,5 @@ def comparison(opening, closing):
 
 
 print(check_balanced("([]([({})]){})"))
-print(check_balanced("(({(])}))"))
+print(check_balanced("(({([])}))"))
 print(check_balanced("((())"))

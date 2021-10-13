@@ -74,7 +74,7 @@ class ProductStore:
 
 try:
     p = Product("Sport", "Football T-Shirt", 100)
-    p2 = Product("Food", "Ramen", 1.5)
+    p2 = Product("Food", "Ramen", 20)
     s = ProductStore()
     s.add(p2, 20)
     s.sell_product(p2, 5)
@@ -86,3 +86,4 @@ try:
 
 except ValueError as e:
     print(e)
+

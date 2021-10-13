@@ -1,7 +1,7 @@
 class TVController:
     CHANNELS = ["BBC", "Discovery", "TV1000VIP", "TV1000"]
     number = 1
-    i = ""
+    # i = ""
 
     def get_current(self):
         return self.CHANNELS[self.number - 1]

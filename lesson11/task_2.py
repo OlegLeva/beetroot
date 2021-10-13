@@ -20,6 +20,7 @@ class Mathematician():
         return result
 
 
+
 m = Mathematician()
 
 print(m.square_nums([5, 8, 15, 77]))
