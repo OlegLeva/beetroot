@@ -13,4 +13,4 @@ class Decor:
 def text(y):
     return y
 
-print(text([5, 9, 2, 7]))
+print(text([5, 9, 2]))
